@@ -15,9 +15,10 @@ public class Connect {
     
       Class.forName("oracle.jdbc.driver.OracleDriver");
       
-      String url = "jdbc:oracle:thin:172.15.11.102/btssio@//localhost:1521/xe";
-      String user = "ora_2slamppe_eq4";
-      String password = "equipe04";
+      
+            String url = "jdbc:oracle:thin:@172.15.11.102:1521:orcl";
+            String user = "ora_2slamppe_eq4";
+            String password = "equipe04";
 
       Connection con = DriverManager.getConnection(url, user, password);
 
