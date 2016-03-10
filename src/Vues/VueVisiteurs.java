@@ -12,13 +12,13 @@ import javax.swing.JTextField;
  *
  * @author btssio
  */
-public class Visiteurs extends javax.swing.JFrame {
+public class VueVisiteurs extends javax.swing.JFrame {
 DefaultComboBoxModel modeleListeVisiteurs;
 
     /**
      * Creates new form Visiteurs
      */
-    public Visiteurs() {
+    public VueVisiteurs() {
         initComponents();
         modeleListeVisiteurs = new DefaultComboBoxModel();
         jComboBoxListeVisiteurs.setModel(modeleListeVisiteurs);
@@ -231,21 +231,23 @@ DefaultComboBoxModel modeleListeVisiteurs;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Visiteurs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VueVisiteurs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Visiteurs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VueVisiteurs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Visiteurs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VueVisiteurs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Visiteurs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VueVisiteurs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Visiteurs().setVisible(true);
+                new VueVisiteurs().setVisible(true);
             }
         });
     }

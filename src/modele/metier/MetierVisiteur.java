@@ -1,5 +1,5 @@
 
-package models.metier;
+package modele.metier;
 
 import java.sql.Date;
 

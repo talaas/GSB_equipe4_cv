@@ -3,27 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers;
+package controleurs;
 
-import Vues.Visiteurs;
+import Vues.VueVisiteurs;
 import java.sql.SQLException;
-import models.metier.MetierVisiteur;
+import modele.metier.MetierVisiteur;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import models.dao.Dao;
+import modele.dao.VisiteurDao;
 
 /**
  *
  * @author btssio
  */
-public class ControllersVisiteurs {
-    private Visiteurs vue;
+public class CtrlVisiteurs {
+    private VueVisiteurs vue;
     private List<MetierVisiteur> lesVisiteurs;
 
-    public ControllersVisiteurs(Visiteurs vue) {
+    public CtrlVisiteurs(VueVisiteurs vue) {
         this.vue = vue;
         afficherLesVisiteurs();
     }
@@ -31,7 +31,7 @@ public class ControllersVisiteurs {
         
      public final void afficherLesVisiteurs() {
         try {
-            lesVisiteurs = Dao.getAll();
+            lesVisiteurs = VisiteurDao.getAll();
             for (MetierVisiteur visiteur : lesVisiteurs){
                 vue.getModeleListeVisiteurs().addElement(visiteur.getNom() + " " + visiteur.getPrenom());
             }
@@ -47,7 +47,7 @@ public class ControllersVisiteurs {
      
 //     public void chargerDonneesVisiteur(String matricule) throws DaoException {
 //        
-//        MetierVisiteur unVisiteur = Dao.lireUnVisiteur(matricule);
+//        MetierVisiteur unVisiteur = VisiteurDao.lireUnVisiteur(matricule);
 //        
 //        vue.getjTextFieldAdresseVisiteur().setText(unVisiteur.getAdresse());
 //        vue.getjTextFieldCPVisiteur().setText(unVisiteur.getCp());
