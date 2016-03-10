@@ -5,6 +5,7 @@
  */
 package Vues;
 
+import controleurs.CtrlVisiteurs;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
