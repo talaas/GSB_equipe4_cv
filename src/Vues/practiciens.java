@@ -54,6 +54,13 @@ public class practiciens extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jMenuMenu = new javax.swing.JMenuBar();
+        jMenuAcceuil = new javax.swing.JMenu();
+        jMenuVisiteurs = new javax.swing.JMenu();
+        jMenuMedicament = new javax.swing.JMenu();
+        jMenuPraticiens = new javax.swing.JMenu();
+        jMenuRapportVisite = new javax.swing.JMenu();
+        jMenuConnexion = new javax.swing.JMenu();
 
         jLabel8.setText("jLabel8");
 
@@ -89,6 +96,26 @@ public class practiciens extends javax.swing.JFrame {
         jButton3.setText("Suivant");
 
         jButton4.setText("Précédent");
+
+        jMenuAcceuil.setText("Acceuil");
+        jMenuMenu.add(jMenuAcceuil);
+
+        jMenuVisiteurs.setText("Visiteurs");
+        jMenuMenu.add(jMenuVisiteurs);
+
+        jMenuMedicament.setText("Medicament");
+        jMenuMenu.add(jMenuMedicament);
+
+        jMenuPraticiens.setText("Praticiens");
+        jMenuMenu.add(jMenuPraticiens);
+
+        jMenuRapportVisite.setText("Rapport Visite");
+        jMenuMenu.add(jMenuRapportVisite);
+
+        jMenuConnexion.setText("Connexion");
+        jMenuMenu.add(jMenuConnexion);
+
+        setJMenuBar(jMenuMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,7 +161,7 @@ public class practiciens extends javax.swing.JFrame {
                                     .addComponent(jTextField2)
                                     .addComponent(jTextField8)
                                     .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(0, 22, Short.MAX_VALUE))
+                        .addGap(0, 63, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton4)
@@ -188,7 +215,7 @@ public class practiciens extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
@@ -252,6 +279,13 @@ public class practiciens extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenuAcceuil;
+    private javax.swing.JMenu jMenuConnexion;
+    private javax.swing.JMenu jMenuMedicament;
+    private javax.swing.JMenuBar jMenuMenu;
+    private javax.swing.JMenu jMenuPraticiens;
+    private javax.swing.JMenu jMenuRapportVisite;
+    private javax.swing.JMenu jMenuVisiteurs;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField1;

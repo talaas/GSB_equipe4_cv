@@ -47,6 +47,13 @@ public class rapportVisite extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jMenuMenu = new javax.swing.JMenuBar();
+        jMenuAcceuil = new javax.swing.JMenu();
+        jMenuVisiteurs = new javax.swing.JMenu();
+        jMenuMedicament = new javax.swing.JMenu();
+        jMenuPraticiens = new javax.swing.JMenu();
+        jMenuRapportVisite = new javax.swing.JMenu();
+        jMenuConnexion = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,6 +112,26 @@ public class rapportVisite extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Rapport de visite");
 
+        jMenuAcceuil.setText("Acceuil");
+        jMenuMenu.add(jMenuAcceuil);
+
+        jMenuVisiteurs.setText("Visiteurs");
+        jMenuMenu.add(jMenuVisiteurs);
+
+        jMenuMedicament.setText("Medicament");
+        jMenuMenu.add(jMenuMedicament);
+
+        jMenuPraticiens.setText("Praticiens");
+        jMenuMenu.add(jMenuPraticiens);
+
+        jMenuRapportVisite.setText("Rapport Visite");
+        jMenuMenu.add(jMenuRapportVisite);
+
+        jMenuConnexion.setText("Connexion");
+        jMenuMenu.add(jMenuConnexion);
+
+        setJMenuBar(jMenuMenu);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,7 +162,7 @@ public class rapportVisite extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel7)
                                             .addComponent(jButton1))))
-                                .addGap(0, 1, Short.MAX_VALUE))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(294, 294, 294))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -253,6 +280,13 @@ public class rapportVisite extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JMenu jMenuAcceuil;
+    private javax.swing.JMenu jMenuConnexion;
+    private javax.swing.JMenu jMenuMedicament;
+    private javax.swing.JMenuBar jMenuMenu;
+    private javax.swing.JMenu jMenuPraticiens;
+    private javax.swing.JMenu jMenuRapportVisite;
+    private javax.swing.JMenu jMenuVisiteurs;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;

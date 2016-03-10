@@ -35,6 +35,16 @@ DefaultComboBoxModel modeleListeVisiteurs;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jLabelVisiteur = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabelRecherche = new javax.swing.JLabel();
@@ -59,6 +69,33 @@ DefaultComboBoxModel modeleListeVisiteurs;
         jButtonSuivant = new javax.swing.JButton();
         jButtonFermer = new javax.swing.JButton();
         jComboBoxListeVisiteurs = new javax.swing.JComboBox();
+        jMenuMenu = new javax.swing.JMenuBar();
+        jMenuAcceuil = new javax.swing.JMenu();
+        jMenuVisiteurs = new javax.swing.JMenu();
+        jMenuMedicament = new javax.swing.JMenu();
+        jMenuPraticiens = new javax.swing.JMenu();
+        jMenuRapportVisite = new javax.swing.JMenu();
+        jMenuConnexion = new javax.swing.JMenu();
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenu3.setText("File");
+        jMenuBar2.add(jMenu3);
+
+        jMenu4.setText("Edit");
+        jMenuBar2.add(jMenu4);
+
+        jMenuItem2.setText("jMenuItem2");
+
+        jMenuItem3.setText("jMenuItem3");
+
+        jMenuItem4.setText("jMenuItem4");
+
+        jMenuItem5.setText("jMenuItem5");
+
+        jMenuItem6.setText("jMenuItem6");
+
+        jMenuItem7.setText("jMenuItem7");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,6 +136,26 @@ DefaultComboBoxModel modeleListeVisiteurs;
         });
 
         jComboBoxListeVisiteurs.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jMenuAcceuil.setText("Acceuil");
+        jMenuMenu.add(jMenuAcceuil);
+
+        jMenuVisiteurs.setText("Visiteurs");
+        jMenuMenu.add(jMenuVisiteurs);
+
+        jMenuMedicament.setText("Medicament");
+        jMenuMenu.add(jMenuMedicament);
+
+        jMenuPraticiens.setText("Praticiens");
+        jMenuMenu.add(jMenuPraticiens);
+
+        jMenuRapportVisite.setText("Rapport Visite");
+        jMenuMenu.add(jMenuRapportVisite);
+
+        jMenuConnexion.setText("Connexion");
+        jMenuMenu.add(jMenuConnexion);
+
+        setJMenuBar(jMenuMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,9 +211,9 @@ DefaultComboBoxModel modeleListeVisiteurs;
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 16, Short.MAX_VALUE)
+                                .addGap(0, 61, Short.MAX_VALUE)
                                 .addComponent(jButtonFermer)))))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,6 +326,23 @@ DefaultComboBoxModel modeleListeVisiteurs;
     private javax.swing.JLabel jLabelRecherche;
     private javax.swing.JLabel jLabelSecteur;
     private javax.swing.JLabel jLabelVisiteur;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenuAcceuil;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenu jMenuConnexion;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenu jMenuMedicament;
+    private javax.swing.JMenuBar jMenuMenu;
+    private javax.swing.JMenu jMenuPraticiens;
+    private javax.swing.JMenu jMenuRapportVisite;
+    private javax.swing.JMenu jMenuVisiteurs;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextFieldAdresseVisiteur;

@@ -48,6 +48,13 @@ public class Medicament extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jMenuMenu = new javax.swing.JMenuBar();
+        jMenuAcceuil = new javax.swing.JMenu();
+        jMenuVisiteurs = new javax.swing.JMenu();
+        jMenuMedicament = new javax.swing.JMenu();
+        jMenuPraticiens = new javax.swing.JMenu();
+        jMenuRapportVisite = new javax.swing.JMenu();
+        jMenuConnexion = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,6 +70,12 @@ public class Medicament extends javax.swing.JFrame {
         jLabel5.setText("Composition");
 
         jLabel6.setText("Effets indésirable");
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -81,6 +94,26 @@ public class Medicament extends javax.swing.JFrame {
         jButton2.setText("Suivant");
 
         jButton3.setText("Fermer");
+
+        jMenuAcceuil.setText("Acceuil");
+        jMenuMenu.add(jMenuAcceuil);
+
+        jMenuVisiteurs.setText("Visiteurs");
+        jMenuMenu.add(jMenuVisiteurs);
+
+        jMenuMedicament.setText("Medicament");
+        jMenuMenu.add(jMenuMedicament);
+
+        jMenuPraticiens.setText("Praticiens");
+        jMenuMenu.add(jMenuPraticiens);
+
+        jMenuRapportVisite.setText("Rapport Visite");
+        jMenuMenu.add(jMenuRapportVisite);
+
+        jMenuConnexion.setText("Connexion");
+        jMenuMenu.add(jMenuConnexion);
+
+        setJMenuBar(jMenuMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,7 +196,7 @@ public class Medicament extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
@@ -173,6 +206,10 @@ public class Medicament extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,6 +259,13 @@ public class Medicament extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JMenu jMenuAcceuil;
+    private javax.swing.JMenu jMenuConnexion;
+    private javax.swing.JMenu jMenuMedicament;
+    private javax.swing.JMenuBar jMenuMenu;
+    private javax.swing.JMenu jMenuPraticiens;
+    private javax.swing.JMenu jMenuRapportVisite;
+    private javax.swing.JMenu jMenuVisiteurs;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
