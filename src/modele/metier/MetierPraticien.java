@@ -6,7 +6,7 @@ package modele.metier;
  * @author flevesque
  */
 
-public class MetierPracticien {
+public class MetierPraticien {
     private String num;
     private String nom;
     private String prenom;
@@ -15,7 +15,7 @@ public class MetierPracticien {
     private String ville;
     private String coef;
 
-    public MetierPracticien(String num, String nom, String prenom, String adresse, String cp, String ville, String coef) {
+    public MetierPraticien(String num, String nom, String prenom, String adresse, String cp, String ville, String coef) {
         this.num = num;
         this.nom = nom;
         this.prenom = prenom;
@@ -79,6 +79,11 @@ public class MetierPracticien {
 
     public void setCoef(String coef) {
         this.coef = coef;
+    }
+
+    @Override
+    public String toString() {
+        return "MetierPraticien{" + "num=" + num + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", cp=" + cp + ", ville=" + ville + ", coef=" + coef + '}';
     }
 
 }

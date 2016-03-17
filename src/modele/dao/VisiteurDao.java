@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 import modele.Connect;
@@ -41,13 +42,17 @@ public class VisiteurDao {
     return lesVisiteurs;
   }
   
-  public static MetierVisiteur getOneByMatricule(int matriculeVisiteur) throws SQLException, ClassNotFoundException {
+  public static MetierVisiteur getOneByMatricule(String matriculeVisiteur) throws SQLException, ClassNotFoundException {
         MetierVisiteur unVisiteur = null;
         
-        Connection con = modele.Connect.Connection();      
-        Statement state = con.createStatement();
+        Connection con = modele.Connect.Connection();  
+        PreparedStatement pstmt;
         
-        ResultSet res = state.executeQuery("SELECT * FROM ADRESSE WHERE ID= ?");
+        String requete = "SELECT * FROM visiteur WHERE VIS_MATRICULE= ?";
+        pstmt = con.prepareStatement(requete);
+        pstmt.setString(1, matriculeVisiteur);
+        
+        ResultSet res = pstmt.executeQuery();
         
         if (res.next()) {
             String matricule = res.getString("VIS_MATRICULE");

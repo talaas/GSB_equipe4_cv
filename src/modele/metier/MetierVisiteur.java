@@ -3,6 +3,10 @@ package modele.metier;
 
 import java.sql.Date;
 
+ /**
+ *
+ * @author btssio
+ */
 
 public class MetierVisiteur {
     private String matricule;
@@ -13,11 +17,16 @@ public class MetierVisiteur {
     private String ville;
     private Date date;
 
- /**
- *
- * @author btssio
- */
-
+    public MetierVisiteur(String matricule, String nom, String prenom, String adresse, String cp, String ville, Date date, String secCode, String labCode) {
+        this.matricule = matricule;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.adresse = adresse;
+        this.cp = cp;
+        this.ville = ville;
+        this.date = date;
+    }
+    
     public String getMatricule() {
         return matricule;
     }
@@ -44,18 +53,6 @@ public class MetierVisiteur {
 
     public Date getDate() {
         return date;
-    }
-
-   
-
-    public MetierVisiteur(String matricule, String nom, String prenom, String adresse, String cp, String ville, Date date, String secCode, String labCode) {
-        this.matricule = matricule;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.adresse = adresse;
-        this.cp = cp;
-        this.ville = ville;
-        this.date = date;
     }
 
     public void setMatricule(String matricule) {
@@ -86,5 +83,9 @@ public class MetierVisiteur {
         this.date = date;
     }
 
-    
+    @Override
+    public String toString() {
+        return "MetierVisiteur{" + "matricule=" + matricule + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", cp=" + cp + ", ville=" + ville + ", date=" + date + '}';
+    }
+
 }

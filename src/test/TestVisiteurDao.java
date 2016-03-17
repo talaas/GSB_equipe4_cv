@@ -10,6 +10,8 @@ import java.util.List;
 import modele.dao.VisiteurDao;
 import modele.metier.MetierVisiteur;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Poulet
@@ -22,10 +24,20 @@ public class TestVisiteurDao {
         
         List<MetierVisiteur> liste = VisiteurDao.getAll();
         
-        liste.stream().forEach((unVisiteur) -> {
-            System.out.println(unVisiteur.getMatricule());
-        });
+        //liste.stream().forEach((unVisiteur) -> {
+        for (int i = 0; i < liste.size(); i++) {
+            System.out.println(liste.get(i).getMatricule());
+        }
         
+        System.out.println("test getOneByMatricule(int matriculeVisiteur) :");
+        
+        Scanner sc = new Scanner(System.in);
+        
+        String num = sc.next();
+        
+        MetierVisiteur leVisiteur = VisiteurDao.getOneByMatricule(num);
+        
+        System.out.println(leVisiteur);
     }
     /*
     public List<MetierVisiteur> getAll() throws SQLException, ClassNotFoundException {
