@@ -1,4 +1,4 @@
-package modele.dao;
+package modele_DAO;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 import modele.Connect;
-import modele.metier.MetierVisiteur;
+import modele_Metier.MetierVisiteur;
 /**
  *
  * @author btssio

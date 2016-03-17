@@ -1,12 +1,8 @@
 
-package modele.metier;
+package modele_Metier;
 
 import java.sql.Date;
 
- /**
- *
- * @author btssio
- */
 
 public class MetierVisiteur {
     private String matricule;
@@ -15,19 +11,14 @@ public class MetierVisiteur {
     private String adresse; 
     private String cp;
     private String ville;
-    private Date date;
+    private Date date;   
+    private String secCode;
+    private String labCode;
 
-    public MetierVisiteur(String matricule, String nom, String prenom, String adresse, String cp, String ville, Date date, String secCode, String labCode) {
-        this.matricule = matricule;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.adresse = adresse;
-        this.cp = cp;
-        this.ville = ville;
-        this.date = date;
-    }
-    
+   
+
     public String getMatricule() {
+        
         return matricule;
     }
 
@@ -53,6 +44,23 @@ public class MetierVisiteur {
 
     public Date getDate() {
         return date;
+    }
+    
+    public String getSecCode() {
+        return secCode;
+    }
+   
+
+    public MetierVisiteur(String matricule, String nom, String prenom, String adresse, String cp, String ville, Date date, String secCode, String labCode) {
+        this.matricule = matricule;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.adresse = adresse;
+        this.cp = cp;
+        this.ville = ville;
+        this.date = date;
+        this.secCode= secCode;
+        this.labCode=labCode;
     }
 
     public void setMatricule(String matricule) {
@@ -83,9 +91,28 @@ public class MetierVisiteur {
         this.date = date;
     }
 
-    @Override
-    public String toString() {
-        return "MetierVisiteur{" + "matricule=" + matricule + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", cp=" + cp + ", ville=" + ville + ", date=" + date + '}';
+    
+
+    public void setSecCode(String secCode) {
+        this.secCode = secCode;
     }
 
+    public String getLabCode() {
+        return labCode;
+    }
+
+    public void setLabCode(String labCode) {
+        this.labCode = labCode;
+    }
+
+    
+    
+    @Override
+    public String toString() {
+        return  nom+" "+ prenom ;
+    }
+    
+    
+    
+    
 }
