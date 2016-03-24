@@ -1,4 +1,4 @@
-package modele.dao;
+package modele_DAO;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
-import modele.metier.MetierMedicament;
+import modele_Metier.MetierMedicament;
 /**
  *
  * @author btssio
@@ -36,7 +36,7 @@ public class MedicamentDao {
     return lesMedicaments;
   }
   
-  public static MetierMedicament getOneByNum(String numMedicament) throws SQLException, ClassNotFoundException {
+  public static MetierMedicament getOneByDepot(String depotMedicament) throws SQLException, ClassNotFoundException {
         MetierMedicament unMedicament = null;
         
         Connection con = modele.Connect.Connection();  
@@ -44,7 +44,7 @@ public class MedicamentDao {
         
         String requete = "SELECT * FROM Medicament WHERE MED_DEPOTLEGAL= ?";
         pstmt = con.prepareStatement(requete);
-        pstmt.setString(1, numMedicament);
+        pstmt.setString(1, depotMedicament);
         
         ResultSet res = pstmt.executeQuery();
         
