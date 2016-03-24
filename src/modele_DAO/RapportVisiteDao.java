@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import modele_Metier.MetierRapportVisite;
 /**
@@ -19,8 +20,10 @@ public class RapportVisiteDao {
         MetierRapportVisite unRapportVisite;
         Connection con = modele.Connect.Connection();      
         Statement state = con.createStatement();
-
-        ResultSet res = state.executeQuery("SELECT * FROM RAPPORT_VISITE R INNER JOIN OFFRIR O ON R.RAP_NUM = O.RAP_NUM");
+        
+        PreparedStatement pstmt;
+        
+        ResultSet res = state.executeQuery("SELECT * FROM RAPPORT_VISITE");
         
         //lancer une 2e requete pour remplir la liste medicaments de l'objet MetierRapportVisite (?)
         
@@ -31,31 +34,52 @@ public class RapportVisiteDao {
             String date = res.getString("RAP_DATE");
             String bilan = res.getString("RAP_BILAN");
             String motif = res.getString("RAP_MOTIF");
-
-            unRapportVisite = new MetierRapportVisite(/* ATTRIBUTS */);
+            
+            /*
+            String requete = "SELECT MED_DEPOTLEGAL, OFF_QTE FROM OFFRIR WHERE RAP_NUM = ?";
+            
+            pstmt = con.prepareStatement(requete);
+            pstmt.setString(1, num);
+            
+            ResultSet res2 = pstmt.executeQuery();
+            
+            while (res2.next()) {
+                String depot = res.getString("MED_DEPOTLEGAL");
+                String qte = res.getString("OFF_QTE");
+                
+                List<String> medicaments;
+                medicaments.
+            }*/
+            
+            unRapportVisite = new MetierRapportVisite(num, date, bilan, motif, numPraticien);
             lesRapportVisites.add(unRapportVisite);
         }
       
     return lesRapportVisites;
   }
   
-  public static MetierRapportVisite getOneByDepot(String depotRapportVisite) throws SQLException, ClassNotFoundException {
+  public static MetierRapportVisite getOneByNum(String numRapportVisite) throws SQLException, ClassNotFoundException {
         MetierRapportVisite unRapportVisite = null;
         
         Connection con = modele.Connect.Connection();  
         PreparedStatement pstmt;
         
-        String requete = "SELECT * FROM RapportVisite WHERE MED_DEPOTLEGAL= ?";
+        String requete = "SELECT * FROM RAPPORT_VISITE WHERE RAP_NUM= ?";
         pstmt = con.prepareStatement(requete);
-        pstmt.setString(1, depotRapportVisite);
+        pstmt.setString(1, numRapportVisite);
         
         ResultSet res = pstmt.executeQuery();
         
         if (res.next()) {
-            /*
-                SAJOUTER ATTRIBUTS
-            */
-            unRapportVisite = new MetierRapportVisite(/* ATTRIBUTS */);
+            
+            String matricule = res.getString("VIS_MATRICULE");
+            String num = res.getString("RAP_NUM");
+            String numPraticien = res.getString("PRA_NUM");
+            String date = (res.getString("RAP_DATE"));
+            String bilan = res.getString("RAP_BILAN");
+            String motif = res.getString("RAP_MOTIF");
+            
+            unRapportVisite = new MetierRapportVisite(num, date, bilan, motif, numPraticien);
         }
         return unRapportVisite;
     }
