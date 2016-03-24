@@ -8,6 +8,8 @@ package Controleurs;
 import Vues.VueRapportVisite;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import modele_DAO.*;
+import modele_Metier.*;
 
 /**
  *
@@ -19,13 +21,21 @@ public class CtrlRapportVisite implements ActionListener {
     public CtrlRapportVisite(VueRapportVisite vue) {
         this.vue=vue;
     }
-
+    public final void afficherLesLabos(){}
     
     
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        Object source = e.getSource();
         
+        if (source == vue.getjButtonNouveau()) {
+            setVues();
+        }
     }
+    
+    
+    
+    void setVues(){}
     
 }

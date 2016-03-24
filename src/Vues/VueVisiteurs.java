@@ -104,6 +104,11 @@ DefaultComboBoxModel modeleListeVisiteurs;
         jButtonPrecedent.setText("Précédent");
 
         jButtonSuivant.setText("Suivant");
+        jButtonSuivant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSuivantActionPerformed(evt);
+            }
+        });
 
         jButtonFermer.setText("Fermer");
         jButtonFermer.addActionListener(new java.awt.event.ActionListener() {
@@ -251,6 +256,10 @@ DefaultComboBoxModel modeleListeVisiteurs;
     private void jComboBoxLaboVisiteurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxLaboVisiteurActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxLaboVisiteurActionPerformed
+
+    private void jButtonSuivantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSuivantActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSuivantActionPerformed
 
     /**
      * @param args the command line arguments
