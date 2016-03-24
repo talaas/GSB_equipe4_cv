@@ -1,5 +1,5 @@
 
-package modele.metier;
+package modele_Metier;
 
  /**
  *
