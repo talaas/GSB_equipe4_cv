@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import modele_DAO.Dao;
 import modele_Metier.MetierVisiteur;
+import modele_DAO.VisiteurDao;
 
 /**
  *
@@ -41,7 +42,7 @@ public class CtrlConnexion implements ActionListener {
             try {
                 String login = vue.getjTextFieldLogin().getText();
                 String pass =  vue.getjTextFieldMDP().getText();
-                myVisiteur = Dao.getConnection(login, pass);                
+                myVisiteur = VisiteurDao.getConnection(login, pass);                
                 if (myVisiteur != null) {
                     VueMenu vue = new VueMenu();
                     CtrlMenu controllers = new CtrlMenu(vue);
