@@ -1,3 +1,4 @@
+import Controleurs.CtrlConnexion;
 import Vues.VueMenu;
 import Vues.VueVisiteurs;
 import Controleurs.CtrlMenu;
@@ -5,6 +6,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import modele.Connect;
 import Controleurs.CtrlVisiteurs;
+import Vues.VueConnexion;
 import javax.swing.UIManager;
 import javax.swing.UIManager.*;
 
@@ -30,9 +32,13 @@ public class Main {
         } catch (Exception e) {
             // If Nimbus is not available, you can set the GUI to another look and feel.
         }
-        VueMenu vue = new VueMenu();
-        CtrlMenu controllers = new CtrlMenu(vue);
-        vue.setVisible(true);       
+//        VueMenu vue = new VueMenu();
+//        CtrlMenu controllers = new CtrlMenu(vue);
+//        vue.setVisible(true);       
+        
+        VueConnexion vue = new VueConnexion ();
+        CtrlConnexion controllers = new CtrlConnexion(vue);
+        vue.setVisible(true);    
     }
     
 }
