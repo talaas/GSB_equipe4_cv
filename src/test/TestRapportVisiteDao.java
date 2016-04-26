@@ -27,6 +27,7 @@ public class TestRapportVisiteDao {
         //liste.stream().forEach((unRapportVisite) -> {
         for (int i = 0; i < liste.size(); i++) {
             System.out.println(liste.get(i).getNum());
+            System.out.println(liste.get(i).toString());
         }
         
         System.out.println("test getOneByMatricule(int matriculeRapportVisite) :");

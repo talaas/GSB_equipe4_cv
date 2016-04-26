@@ -28,6 +28,7 @@ public class VueRapportVisite extends javax.swing.JFrame {
         initComponents();
         modeleListeRapportVisites = new DefaultComboBoxModel();
         jComboBoxListeRapportVisites.setModel(modeleListeRapportVisites);
+        modeleListePraticiens = new DefaultComboBoxModel();
     }
 
     /**
@@ -42,7 +43,6 @@ public class VueRapportVisite extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextFieldNumero = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jComboBoxPracticien = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextFieldMotifVisite = new javax.swing.JTextField();
@@ -60,6 +60,8 @@ public class VueRapportVisite extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jComboBoxListeRapportVisites = new javax.swing.JComboBox();
+        jTextFieldDate = new javax.swing.JTextField();
+        jTextFieldPraticien = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,14 +73,7 @@ public class VueRapportVisite extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Practicien");
-
-        jComboBoxPracticien.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBoxPracticien.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxPracticienActionPerformed(evt);
-            }
-        });
+        jLabel2.setText("Praticien");
 
         jLabel3.setText("Date Rapport");
 
@@ -133,6 +128,18 @@ public class VueRapportVisite extends javax.swing.JFrame {
             }
         });
 
+        jTextFieldDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldDateActionPerformed(evt);
+            }
+        });
+
+        jTextFieldPraticien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldPraticienActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -151,18 +158,18 @@ public class VueRapportVisite extends javax.swing.JFrame {
                         .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextFieldNumero)
-                                        .addComponent(jComboBoxPracticien, 0, 91, Short.MAX_VALUE)
-                                        .addComponent(jTextFieldMotifVisite))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel7)
-                                        .addComponent(jButtonDetails)
-                                        .addComponent(jComboBoxListeRapportVisites, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextFieldNumero, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldMotifVisite)
+                                    .addComponent(jTextFieldDate)
+                                    .addComponent(jTextFieldPraticien))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jButtonDetails)
+                                    .addComponent(jComboBoxListeRapportVisites, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(213, 213, 213))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -196,11 +203,13 @@ public class VueRapportVisite extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBoxPracticien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonDetails))
+                    .addComponent(jButtonDetails)
+                    .addComponent(jTextFieldPraticien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextFieldDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextFieldMotifVisite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -224,10 +233,6 @@ public class VueRapportVisite extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBoxPracticienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPracticienActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxPracticienActionPerformed
-
     private void jTextFieldNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNumeroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNumeroActionPerformed
@@ -239,6 +244,14 @@ public class VueRapportVisite extends javax.swing.JFrame {
     private void jComboBoxListeRapportVisitesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxListeRapportVisitesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxListeRapportVisitesActionPerformed
+
+    private void jTextFieldDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDateActionPerformed
+
+    private void jTextFieldPraticienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPraticienActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldPraticienActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,7 +298,6 @@ public class VueRapportVisite extends javax.swing.JFrame {
     private javax.swing.JButton jButtonPrecedent;
     private javax.swing.JButton jButtonSuivant;
     private javax.swing.JComboBox jComboBoxListeRapportVisites;
-    private javax.swing.JComboBox jComboBoxPracticien;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -298,8 +310,10 @@ public class VueRapportVisite extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTableOffreEchantillon;
     private javax.swing.JTextArea jTextAreaBilan;
+    private javax.swing.JTextField jTextFieldDate;
     private javax.swing.JTextField jTextFieldMotifVisite;
     private javax.swing.JTextField jTextFieldNumero;
+    private javax.swing.JTextField jTextFieldPraticien;
     // End of variables declaration//GEN-END:variables
     
     public DefaultComboBoxModel getModeleListeRapportVisites() {
@@ -358,14 +372,6 @@ public class VueRapportVisite extends javax.swing.JFrame {
         this.jButtonSuivant = jButtonSuivant;
     }
 
-    public JComboBox getjComboBoxPracticien() {
-        return jComboBoxPracticien;
-    }
-
-    public void setjComboBoxPracticien(JComboBox jComboBoxPracticien) {
-        this.jComboBoxPracticien = jComboBoxPracticien;
-    }
-
     public JTable getjTableOffreEchantillon() {
         return jTableOffreEchantillon;
     }
@@ -389,7 +395,15 @@ public class VueRapportVisite extends javax.swing.JFrame {
     public void setjTextFieldMotifVisite(JTextField jTextFieldMotifVisite) {
         this.jTextFieldMotifVisite = jTextFieldMotifVisite;
     }
-
+    
+    public JTextField getjTextFieldPraticien() {
+        return jTextFieldPraticien;
+    }
+    
+    public JTextField getjTextFieldDate() {
+        return jTextFieldDate;
+    }
+    
     public JTextField getjTextFieldNumero() {
         return jTextFieldNumero;
     }

@@ -22,12 +22,12 @@ public class CtrlRapportVisite implements ActionListener {
     private VueRapportVisite vue;
     
     private List<MetierRapportVisite> lesRapports;
-    private List<MetierPraticien> lesPraticiens;
+    //private List<MetierPraticien> lesPraticiens;
     
     public CtrlRapportVisite(VueRapportVisite vue) {
         this.vue=vue;
         afficherLesRapportVisites();
-        afficherLesPraticiens();
+        //afficherLesPraticiens();
         vue.getjButtonFermer().addActionListener(this);
         vue.getjButtonPrecedent().addActionListener(this);
         vue.getjButtonSuivant().addActionListener(this);
@@ -37,7 +37,11 @@ public class CtrlRapportVisite implements ActionListener {
         try {
             lesRapports = RapportVisiteDao.getAll();
             for (MetierRapportVisite rapport : lesRapports){
+                System.out.println(rapport);
                 vue.getModeleListeRapportVisites().addElement(rapport);
+                MetierPraticien praticien = PraticienDao.getOneByNum(rapport.getNumPraticien());
+                System.out.println(praticien);
+                vue.getModeleListePraticiens().addElement(praticien);
             }
             
         } catch (SQLException ex) {
@@ -46,12 +50,12 @@ public class CtrlRapportVisite implements ActionListener {
             JOptionPane.showMessageDialog(vue, "Ctrl - erreur SQL");
         }                        
     }
-    
+    /*
     public final void afficherLesPraticiens() {
         try {
             lesPraticiens = PraticienDao.getAll();
-            for (MetierPraticien rapport : lesPraticiens){
-                vue.getModeleListeRapportVisites().addElement(rapport);
+            for (MetierPraticien praticien : lesPraticiens){
+                vue.getModeleListePraticiens().addElement(praticien);
             }
             
         } catch (SQLException ex) {
@@ -60,7 +64,7 @@ public class CtrlRapportVisite implements ActionListener {
             JOptionPane.showMessageDialog(vue, "Ctrl - erreur SQL");
         }                        
     }
-    
+    */
     
     
     @Override
@@ -99,8 +103,12 @@ public class CtrlRapportVisite implements ActionListener {
     
      void setVues(int z) {
         MetierRapportVisite monRapportVisite = (MetierRapportVisite) vue.getModeleListeRapportVisites().getSelectedItem();
-        vue.getjComboBoxPracticien().setSelectedIndex(z);
+        MetierPraticien monPraticien = (MetierPraticien)vue.getModeleListePraticiens().getElementAt(z);
+        vue.getjTextFieldPraticien().setText(monPraticien.getNom()) ;
+       
         vue.getjTextFieldMotifVisite().setText(monRapportVisite.getMotif());
+        vue.getjTextFieldDate().setText(monRapportVisite.getDate());
+        vue.getjTextFieldNumero().setText(monRapportVisite.getNum());
         vue.getjTextAreaBilan().setText(monRapportVisite.getBilan());
         
     }
