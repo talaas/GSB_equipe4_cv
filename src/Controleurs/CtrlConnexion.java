@@ -49,6 +49,9 @@ public class CtrlConnexion implements ActionListener {
                     vue.setVisible(true);
                 } else {
                     System.out.println("erreur");
+                    String erreurConnexion = ("Erreur Connexion");
+                    vue.getJLabelErreurCo().setText(erreurConnexion);
+                    
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(CtrlMenu.class.getName()).log(Level.SEVERE, null, ex);
