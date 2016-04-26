@@ -6,6 +6,7 @@
 package Vues;
 
 import javax.swing.JButton;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 
@@ -38,7 +39,7 @@ public class VueConnexion extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         identifiant = new javax.swing.JTextField();
         buttonConnexion = new javax.swing.JButton();
-        password = new javax.swing.JTextField();
+        passwordHidden = new javax.swing.JPasswordField();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -64,9 +65,9 @@ public class VueConnexion extends javax.swing.JFrame {
             }
         });
 
-        password.addActionListener(new java.awt.event.ActionListener() {
+        passwordHidden.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordActionPerformed(evt);
+                passwordHiddenActionPerformed(evt);
             }
         });
 
@@ -81,7 +82,7 @@ public class VueConnexion extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(25, 25, 25)
-                        .addComponent(password)
+                        .addComponent(passwordHidden)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
@@ -89,19 +90,18 @@ public class VueConnexion extends javax.swing.JFrame {
                         .addComponent(identifiant, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(152, 152, 152)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addComponent(buttonConnexion)))
+                .addGap(152, 152, 152)
+                .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonConnexion)
+                .addGap(49, 49, 49))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -112,8 +112,8 @@ public class VueConnexion extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                    .addComponent(passwordHidden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
                 .addComponent(buttonConnexion)
                 .addContainerGap())
         );
@@ -129,9 +129,9 @@ public class VueConnexion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_identifiantActionPerformed
 
-    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
+    private void passwordHiddenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordHiddenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_passwordActionPerformed
+    }//GEN-LAST:event_passwordHiddenActionPerformed
 //___________________________________________
     
 
@@ -152,16 +152,22 @@ public class VueConnexion extends javax.swing.JFrame {
         this.identifiant = jTextFieldLogin;
     }
 
-    public JTextField getjTextFieldMDP() {
-        return password;
-    }
-
-    public void setjTextFieldMDP(JTextField jTextFieldMDP) {
-        this.password = jTextFieldMDP;
-    }
-
+//    public JTextField getjTextFieldMDP() {
+//        return password;
+//    }
+//
+//    public void setjTextFieldMDP(JTextField jTextFieldMDP) {
+//        this.password = jTextFieldMDP;
+//    }
     
+    public JPasswordField getjTextFieldMDP () {
+        return passwordHidden;
+    }
     
+     public void setjTextFieldMDP(JTextField jTextFieldMDP) {
+       this.passwordHidden = (JPasswordField) jTextFieldMDP;
+     }
+     
     //______________________________________
     
     
@@ -215,6 +221,6 @@ public class VueConnexion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField password;
+    private javax.swing.JPasswordField passwordHidden;
     // End of variables declaration//GEN-END:variables
 }
