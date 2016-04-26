@@ -151,14 +151,6 @@ public class VueConnexion extends javax.swing.JFrame {
     public void setjTextFieldLogin(JTextField jTextFieldLogin) {
         this.identifiant = jTextFieldLogin;
     }
-
-//    public JTextField getjTextFieldMDP() {
-//        return password;
-//    }
-//
-//    public void setjTextFieldMDP(JTextField jTextFieldMDP) {
-//        this.password = jTextFieldMDP;
-//    }
     
     public JPasswordField getjTextFieldMDP () {
         return passwordHidden;
