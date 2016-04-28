@@ -84,7 +84,15 @@ public class MetierRapportVisite {
 
     @Override
     public String toString() {
-        return "MetierRapportVisite{" + "num=" + num + ", date=" + date + ", bilan=" + bilan + ", motif=" + motif + ", numPraticien=" + numPraticien + '}';
+        return toStringB(1);
     }
-    
+    public String toStringB(int a) {
+        switch (a)
+            {
+            case 1:
+                return "Rapport "+num;
+            default:
+                return "MetierRapportVisite{" + "num=" + num + ", date=" + date + ", bilan=" + bilan + ", motif=" + motif + ", numPraticien=" + numPraticien + '}';
+        }    
+    }
 }

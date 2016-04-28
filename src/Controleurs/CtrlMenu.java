@@ -46,14 +46,14 @@ public class CtrlMenu implements ActionListener {
         if (source == vue.getjButtonMenuVisiteur()){
             VueVisiteurs vueVisiteur = new VueVisiteurs();
             CtrlVisiteurs controllers = new CtrlVisiteurs(vueVisiteur);        
-            vueVisiteur.setVisible(true); 
+//            vueVisiteur.setVisible(true); s
         }
-        
-        if(source == vue.getjButtonRDV()){
-            VueRapportVisite vueRapportVisiteur = new VueRapportVisite();
-            CtrlRapportVisite controllers = new CtrlRapportVisite(vueRapportVisiteur);
-            vueRapportVisiteur.setVisible(true);
-        }
+//        
+//        if(source == vue.getjButtonRDV()){
+//            VueRapportVisite vueRapportVisiteur = new VueRapportVisite();
+//            CtrlRapportVisite controllers = new CtrlRapportVisite(vueRapportVisiteur);
+//            vueRapportVisiteur.setVisible(true);
+//        }
         
 //        if(source == vue.getjButtonDeconnection()){
 //            Accueil acceuil = new Accueil();

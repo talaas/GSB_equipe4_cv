@@ -6,6 +6,8 @@
 package Vues;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 
@@ -37,9 +39,10 @@ public class VueConnexion extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         identifiant = new javax.swing.JTextField();
-        buttonAnnuler = new javax.swing.JButton();
         buttonConnexion = new javax.swing.JButton();
-        password = new javax.swing.JTextField();
+        passwordHidden = new javax.swing.JPasswordField();
+        erreurCo = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -58,13 +61,6 @@ public class VueConnexion extends javax.swing.JFrame {
             }
         });
 
-        buttonAnnuler.setText("Annuler");
-        buttonAnnuler.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAnnulerActionPerformed(evt);
-            }
-        });
-
         buttonConnexion.setText("Connexion");
         buttonConnexion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,9 +68,9 @@ public class VueConnexion extends javax.swing.JFrame {
             }
         });
 
-        password.addActionListener(new java.awt.event.ActionListener() {
+        passwordHidden.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordActionPerformed(evt);
+                passwordHiddenActionPerformed(evt);
             }
         });
 
@@ -87,48 +83,58 @@ public class VueConnexion extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(buttonAnnuler)
-                            .addComponent(jLabel4))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(buttonConnexion)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(password)
-                                .addContainerGap())))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(47, 47, 47)
                         .addComponent(identifiant, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addComponent(jLabel2)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(passwordHidden))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buttonConnexion)
+                                .addGap(41, 41, 41)))))
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(152, 152, 152)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(152, 152, 152)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(erreurCo)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(identifiant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonAnnuler)
-                    .addComponent(buttonConnexion))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(erreurCo)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(identifiant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(passwordHidden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonConnexion)
+                    .addComponent(jLabel2))
+                .addGap(5, 5, 5))
         );
 
         pack();
@@ -142,13 +148,9 @@ public class VueConnexion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_identifiantActionPerformed
 
-    private void buttonAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAnnulerActionPerformed
+    private void passwordHiddenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordHiddenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonAnnulerActionPerformed
-
-    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordActionPerformed
+    }//GEN-LAST:event_passwordHiddenActionPerformed
 //___________________________________________
     
 
@@ -168,20 +170,27 @@ public class VueConnexion extends javax.swing.JFrame {
     public void setjTextFieldLogin(JTextField jTextFieldLogin) {
         this.identifiant = jTextFieldLogin;
     }
-
-    public JTextField getjTextFieldMDP() {
-        return password;
-    }
-
-    public void setjTextFieldMDP(JTextField jTextFieldMDP) {
-        this.password = jTextFieldMDP;
-    }
-
     
+    public JPasswordField getjTextFieldMDP () {
+        return passwordHidden;
+    }
     
+     public void setjTextFieldMDP(JTextField jTextFieldMDP) {
+       this.passwordHidden = (JPasswordField) jTextFieldMDP;
+     }
+     
     //______________________________________
+
+    public JLabel getJLabelErreurCo() {
+        return erreurCo;
+    }
+
+    public void setJLabelErreurCo(JLabel erreurCo) {
+        this.erreurCo = erreurCo;
+    }
     
     
+     
     /**
      * @param args the command line arguments
      */
@@ -225,14 +234,15 @@ public class VueConnexion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonAnnuler;
     private javax.swing.JButton buttonConnexion;
+    private javax.swing.JLabel erreurCo;
     private javax.swing.JTextField identifiant;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField password;
+    private javax.swing.JPasswordField passwordHidden;
     // End of variables declaration//GEN-END:variables
 }

@@ -47,8 +47,12 @@ public class CtrlConnexion implements ActionListener {
                     VueMenu vue = new VueMenu();
                     CtrlMenu controllers = new CtrlMenu(vue);
                     vue.setVisible(true);
+                    this.vue.setVisible(false);
                 } else {
                     System.out.println("erreur");
+                    String erreurConnexion = ("Erreur Connexion");
+                    vue.getJLabelErreurCo().setText(erreurConnexion);
+                    
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(CtrlMenu.class.getName()).log(Level.SEVERE, null, ex);

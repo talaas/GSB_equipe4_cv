@@ -28,28 +28,12 @@ public class CtrlRapportVisite implements ActionListener {
         this.vue=vue;
         afficherLesRapportVisites();
         //afficherLesPraticiens();
+        vue.getjButtonOK().addActionListener(this);
         vue.getjButtonFermer().addActionListener(this);
         vue.getjButtonPrecedent().addActionListener(this);
         vue.getjButtonSuivant().addActionListener(this);
     }
     
-    public final void afficherLesRapportVisites() {
-        try {
-            lesRapports = RapportVisiteDao.getAll();
-            for (MetierRapportVisite rapport : lesRapports){
-                System.out.println(rapport);
-                vue.getModeleListeRapportVisites().addElement(rapport);
-                MetierPraticien praticien = PraticienDao.getOneByNum(rapport.getNumPraticien());
-                System.out.println(praticien);
-                vue.getModeleListePraticiens().addElement(praticien);
-            }
-            
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(vue, "Ctrl - erreur SQL");
-        }                        
-    }
     /*
     public final void afficherLesPraticiens() {
         try {
@@ -66,11 +50,30 @@ public class CtrlRapportVisite implements ActionListener {
     }
     */
     
+    public final void afficherLesRapportVisites() {
+        try {
+            lesRapports = RapportVisiteDao.getAll();
+            for (MetierRapportVisite rapport : lesRapports){
+                vue.getModeleListeRapportVisites().addElement(rapport);
+                MetierPraticien praticien = PraticienDao.getOneByNum(rapport.getNumPraticien());
+                vue.getModeleListePraticiens().addElement(praticien);
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(vue, "Ctrl - erreur SQL");
+        }                        
+    }
     
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         
+        if (source == vue.getjButtonOK()) {
+            int z = vue.getjComboBoxListeRapportVisites().getSelectedIndex();
+            setVues(z);
+        }   
         if (source == vue.getjButtonNouveau()) {
             setVues(0);
         }
@@ -95,20 +98,14 @@ public class CtrlRapportVisite implements ActionListener {
             vue.dispose();
         }
     }
-    /*
-    publvoid Num(){
-        vue.getjTextFieldNumero()
-        
-    }*/
     
      void setVues(int z) {
         MetierRapportVisite monRapportVisite = (MetierRapportVisite) vue.getModeleListeRapportVisites().getSelectedItem();
         MetierPraticien monPraticien = (MetierPraticien)vue.getModeleListePraticiens().getElementAt(z);
-        vue.getjTextFieldPraticien().setText(monPraticien.getNom()) ;
+        vue.getjTextFieldPraticien().setText(monPraticien.getNom());
        
         vue.getjTextFieldMotifVisite().setText(monRapportVisite.getMotif());
         vue.getjTextFieldDate().setText(monRapportVisite.getDate());
-        vue.getjTextFieldNumero().setText(monRapportVisite.getNum());
         vue.getjTextAreaBilan().setText(monRapportVisite.getBilan());
         
     }
