@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import modele_DAO.*;
 import modele_Metier.*;
@@ -22,7 +24,7 @@ public class CtrlRapportVisite implements ActionListener {
     private VueRapportVisite vue;
     
     private List<MetierRapportVisite> lesRapports;
-    //private List<MetierPraticien> lesPraticiens;
+    private List<MetierPraticien> lesPraticiens;
     
     public CtrlRapportVisite(VueRapportVisite vue) {
         this.vue=vue;
@@ -55,7 +57,11 @@ public class CtrlRapportVisite implements ActionListener {
             lesRapports = RapportVisiteDao.getAll();
             for (MetierRapportVisite rapport : lesRapports){
                 vue.getModeleListeRapportVisites().addElement(rapport);
-                MetierPraticien praticien = PraticienDao.getOneByNum(rapport.getNumPraticien());
+                //MetierPraticien praticien = PraticienDao.getOneByNum(rapport.getNumPraticien());
+                //vue.getModeleListePraticiens().addElement(praticien);
+            }
+            lesPraticiens = PraticienDao.getAll();
+            for (MetierPraticien praticien : lesPraticiens){
                 vue.getModeleListePraticiens().addElement(praticien);
             }
             
@@ -81,7 +87,6 @@ public class CtrlRapportVisite implements ActionListener {
             int i =vue.getjComboBoxListeRapportVisites().getSelectedIndex();
             int z = i-1;
             if(z >-1){
-                
                 vue.getjComboBoxListeRapportVisites().setSelectedIndex(z);
                 setVues(z);
             }            
@@ -102,20 +107,31 @@ public class CtrlRapportVisite implements ActionListener {
      void setVues(int z) {
         MetierRapportVisite monRapportVisite = (MetierRapportVisite) vue.getModeleListeRapportVisites().getSelectedItem();
         MetierPraticien monPraticien = (MetierPraticien)vue.getModeleListePraticiens().getElementAt(z);
+        
+        vue.getjComboBoxListePraticiens().setSelectedIndex(getIntIndexPraticien(monRapportVisite));
+        
         vue.getjTextFieldPraticien().setText(monPraticien.getNom());
-       
         vue.getjTextFieldMotifVisite().setText(monRapportVisite.getMotif());
         vue.getjTextFieldDate().setText(monRapportVisite.getDate());
         vue.getjTextAreaBilan().setText(monRapportVisite.getBilan());
-        
     }
      
-     int getIntIndexPraticien(List<MetierPraticien> mesPraticiens, MetierRapportVisite monRapportVisite, int index){
+    int getIntIndexPraticien(MetierRapportVisite monRapportVisite){
         
-        for(MetierPraticien praticien : mesPraticiens){
-            if(praticien.getNum().equals(monRapportVisite.getNum())){
-               index = mesPraticiens.indexOf(praticien);
+        int index = 0;
+        
+        try {
+            List<MetierPraticien> mesPraticiens = PraticienDao.getAll();
+            for(MetierPraticien praticien : mesPraticiens){
+                if(praticien.getNum().equals(monRapportVisite.getNumPraticien())){
+                   index = mesPraticiens.indexOf(praticien);
+                   return index;
+                }
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlRapportVisite.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CtrlRapportVisite.class.getName()).log(Level.SEVERE, null, ex);
         }
         return index;        
     }

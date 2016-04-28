@@ -30,6 +30,7 @@ public class VueRapportVisite extends javax.swing.JFrame {
         modeleListeRapportVisites = new DefaultComboBoxModel();
         jComboBoxListeRapportVisites.setModel(modeleListeRapportVisites);
         modeleListePraticiens = new DefaultComboBoxModel();
+        jComboBoxListePraticiens.setModel(modeleListePraticiens);
         modeleListeMedicaments = new DefaultComboBoxModel();
         jComboBoxMedicament.setModel(modeleListeMedicaments);
     }
@@ -65,6 +66,7 @@ public class VueRapportVisite extends javax.swing.JFrame {
         jTextFieldDate = new javax.swing.JTextField();
         jTextFieldPraticien = new javax.swing.JTextField();
         jButtonOK = new javax.swing.JButton();
+        jComboBoxListePraticiens = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -139,6 +141,13 @@ public class VueRapportVisite extends javax.swing.JFrame {
 
         jButtonOK.setText("OK");
 
+        jComboBoxListePraticiens.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxListePraticiens.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxListePraticiensActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -156,7 +165,7 @@ public class VueRapportVisite extends javax.swing.JFrame {
                             .addComponent(jLabel6))
                         .addGap(41, 41, 41)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
                             .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -169,14 +178,15 @@ public class VueRapportVisite extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel7))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(19, 19, 19)
-                                        .addComponent(jButtonDetails))
-                                    .addGroup(layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButtonOK)))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                        .addComponent(jButtonOK))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(19, 19, 19)
+                                        .addComponent(jButtonDetails)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jComboBoxListePraticiens, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(180, 180, 180))
+                .addGap(85, 85, 85))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButtonPrecedent)
@@ -208,7 +218,9 @@ public class VueRapportVisite extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonDetails)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonDetails)
+                        .addComponent(jComboBoxListePraticiens, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
                         .addComponent(jTextFieldPraticien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -256,6 +268,10 @@ public class VueRapportVisite extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldPraticienActionPerformed
 
+    private void jComboBoxListePraticiensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxListePraticiensActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxListePraticiensActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -301,6 +317,7 @@ public class VueRapportVisite extends javax.swing.JFrame {
     private javax.swing.JButton jButtonOK;
     private javax.swing.JButton jButtonPrecedent;
     private javax.swing.JButton jButtonSuivant;
+    private javax.swing.JComboBox jComboBoxListePraticiens;
     private javax.swing.JComboBox jComboBoxListeRapportVisites;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -333,6 +350,10 @@ public class VueRapportVisite extends javax.swing.JFrame {
     
     public JComboBox getjComboBoxListeRapportVisites() {
         return jComboBoxListeRapportVisites;
+    }
+    
+    public JComboBox getjComboBoxListePraticiens() {
+        return jComboBoxListePraticiens;
     }
     
     public JButton getjButtonNouveau() {

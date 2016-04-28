@@ -36,7 +36,8 @@ public class Main {
         VueMenu vue = new VueMenu();
         CtrlMenu controllers = new CtrlMenu(vue);
         vue.setVisible(true);       
-       /*
+       
+        /*
         VueConnexion vue = new VueConnexion ();
         CtrlConnexion controllers = new CtrlConnexion(vue);
         vue.setVisible(true);

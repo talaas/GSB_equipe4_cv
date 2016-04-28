@@ -27,7 +27,7 @@ public class TestRapportVisiteDao {
         //liste.stream().forEach((unRapportVisite) -> {
         for (int i = 0; i < liste.size(); i++) {
             System.out.println(liste.get(i).getNum());
-            System.out.println(liste.get(i).toString());
+            System.out.println(liste.get(i).toStringB(0));
         }
         
         System.out.println("test getOneByMatricule(int matriculeRapportVisite) :");
@@ -38,7 +38,7 @@ public class TestRapportVisiteDao {
         
         MetierRapportVisite leRapportVisite = RapportVisiteDao.getOneByNum(num);
         
-        System.out.println(leRapportVisite);
+        System.out.println(leRapportVisite.toStringB(0));
     }
     /*
     public List<MetierRapportVisite> getAll() throws SQLException, ClassNotFoundException {

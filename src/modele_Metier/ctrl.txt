@@ -1,0 +1,165 @@
+
+package controllers;
+
+import Vues.Menu;
+import Vues.practiciens;
+import Vues.rapportVisite;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import models.dao.Dao;
+import models.dao.DaoRapport;
+import models.metier.LieuExercice;
+import models.metier.Medicaments;
+import models.metier.MetierPracticiens;
+import models.metier.MetierVisiteur;
+import models.metier.RapportVisite;
+
+/**
+ *
+ * @author btssio
+ */
+public class ControllersRapportVisite implements ActionListener {
+    private rapportVisite vue;
+    private List<MetierPracticiens> lesPracticiens;
+    private List<Medicaments> lesMedicaments;
+    private List<RapportVisite> lesRapports;
+    private RapportVisite unPracticien;
+    private MetierVisiteur unVisiteur;
+    private List<LieuExercice> lesLieus;
+    private practiciens vuePracticiens = new practiciens();
+    private String login;
+    private int count = 0;
+    
+    public ControllersRapportVisite(rapportVisite vue, String login) {
+        this.vue=vue;
+        this.login = login;
+        afficherLesPraticiens();
+        vue.getjButtonNouveau().addActionListener(this);
+        vue.getjButtonDetails().addActionListener(this);
+        vue.getjButtonFermer().addActionListener(this);
+        vue.getjButtonPrecedent().addActionListener(this);
+        vue.getjButtonSuivant().addActionListener(this);
+        vuePracticiens.getjButtonFermer().addActionListener(this);
+    }
+    
+    public final void afficherLesPraticiens() {
+        try {
+            lesPracticiens = Dao.getAllPracticiens();
+            for (MetierPracticiens unPracticien : lesPracticiens) {
+                vue.getModeleListePracticien().addElement(unPracticien);
+            }
+            lesMedicaments = Dao.getAllMedic();
+            for (Medicaments unmedoc : lesMedicaments){
+                vue.getModelListeMedoc().addElement(unmedoc.toString());
+            }
+            lesLieus = Dao.getAllLieuExercice();
+            for (LieuExercice unLieu : lesLieus) {
+                vuePracticiens.getjComboBoxLieuExercice().addItem(unLieu);
+            }
+            lesRapports = Dao.getAllRapports();
+            setVue(count);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(vue, "Ctrl - erreur SQL");
+        }
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        try{
+            Object source =e.getSource();
+            if (source == vue.getjButtonDetails()){
+                vuePracticiens.setVisible(true);
+                SetVuesPrac(vue.getjComboBoxPracticien().getSelectedIndex());
+            }
+
+            if (source == vue.getjButtonFermer()){
+                vue.setVisible(false);
+                Menu vue = new Menu();
+                ControllerMenu controllers = new ControllerMenu(vue, login);
+                vue.setVisible(true);
+            }
+
+            if (source == vue.getjButtonSuivant()){
+                if(count < lesRapports.size()-1){
+                    count += 1;
+                    setVue(count);
+                }
+            }
+            
+            if (source==vue.getjButtonPrecedent()){
+                if(count > 0){
+                    count -= 1;
+                    setVue(count);
+                }
+            }
+
+            if (source == vuePracticiens.getjButtonFermer()){
+                vuePracticiens.setVisible(false);
+            }
+
+            if (source == vue.getjButtonNouveau()) {
+                unPracticien = (RapportVisite) vue.getjComboBoxPracticien().getSelectedItem();
+                String numRapport = vue.getjTextFieldNumRapport().getText();
+                String modifVisite = vue.getjTextFieldModifVisite().getText();
+                String bilan = vue.getjTextAreaBilan().getText();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ControllersMedicaments.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ControllersMedicaments.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    public MetierVisiteur setVisiteurWithFromAccueil(MetierVisiteur myVisiteur){
+        unVisiteur=myVisiteur;
+        return unVisiteur;
+    }        
+    
+    
+    void setVue(int index) throws SQLException, ClassNotFoundException{
+        RapportVisite unRapport = lesRapports.get(index);
+        vue.getjTextFieldNumRapport().setText(unRapport.getNumeroRapport());
+        vue.getjDateChooser1().setDate(unRapport.getDateRapport());
+        vue.getjTextFieldModifVisite().setText(unRapport.getMotifRapport());
+        vue.getjTextAreaBilan().setText(unRapport.getBilanRapport());
+        vue.getjComboBoxPracticien().setSelectedIndex((integer) unRapport.getNumeroPracticien());
+    }
+    
+    
+    void SetVuesPrac(int z) {
+        MetierPracticiens monPracticien = lesPracticiens.get(z);
+        vuePracticiens.getjTextFieldNumero().setText(monPracticien.getPra_num());
+        vuePracticiens.getjTextFieldNom().setText(monPracticien.getPra_nom());
+        vuePracticiens.getjTextFieldPrenom().setText(monPracticien.getPra_prenom());
+        vuePracticiens.getjTextFieldAdresse().setText(monPracticien.getPra_adresse());
+        vuePracticiens.getjTextFieldCP().setText(monPracticien.getPra_cp());
+        vuePracticiens.getjTextFieldVille().setText(monPracticien.getPra_ville());
+        vuePracticiens.getjTextFieldCN().setText(monPracticien.getPra_coefnotoriete());
+        vuePracticiens.getjComboBoxLieuExercice().setSelectedIndex(getIntIndexLieu(lesLieus, monPracticien, -1));
+    }
+        
+    int getIntIndexLieu(List<LieuExercice> myLieu, MetierPracticiens myPracticien, int index) {
+
+        for (LieuExercice unLieu : myLieu) {
+            if (unLieu.getTyp_code().equals(myPracticien.getTyp_code())) {
+                index = myLieu.indexOf(unLieu);
+            }
+        }
+        return index;
+    }
+    
+    
+    void displayRapportVisite() throws SQLException, ClassNotFoundException{
+        
+        List<RapportVisite> myList = Dao.getRapportVisiteWithVisiteur(setVisiteurWithFromAccueil(unVisiteur));
+        
+    }
+}
