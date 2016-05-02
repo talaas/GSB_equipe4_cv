@@ -83,7 +83,17 @@ public class MetierPraticien {
 
     @Override
     public String toString() {
-        return "MetierPraticien{" + "num=" + num + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", cp=" + cp + ", ville=" + ville + ", coef=" + coef + '}';
+        return toStringB(1);
+    }
+    
+    public String toStringB(int a) {
+        switch (a)
+            {
+            case 1:
+                return nom+" "+prenom;
+            default:
+            return "MetierPraticien{" + "num=" + num + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", cp=" + cp + ", ville=" + ville + ", coef=" + coef + '}';
+        }    
     }
 
 }

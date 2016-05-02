@@ -23,7 +23,7 @@ public class RapportVisiteDao {
         
         PreparedStatement pstmt;
         
-        ResultSet res = state.executeQuery("SELECT * FROM RAPPORT_VISITE");
+        ResultSet res = state.executeQuery("SELECT * FROM RAPPORT_VISITE ORDER BY RAP_NUM");
         
         //lancer une 2e requete pour remplir la liste medicaments de l'objet MetierRapportVisite (?)
         

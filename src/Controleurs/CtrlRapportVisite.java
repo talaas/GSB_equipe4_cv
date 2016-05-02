@@ -26,6 +26,8 @@ public class CtrlRapportVisite implements ActionListener {
     private List<MetierRapportVisite> lesRapports;
     private List<MetierPraticien> lesPraticiens;
     
+    private boolean set = false;
+    
     public CtrlRapportVisite(VueRapportVisite vue) {
         this.vue=vue;
         afficherLesRapportVisites();
@@ -34,6 +36,7 @@ public class CtrlRapportVisite implements ActionListener {
         vue.getjButtonFermer().addActionListener(this);
         vue.getjButtonPrecedent().addActionListener(this);
         vue.getjButtonSuivant().addActionListener(this);
+        vue.getjButtonNouveau().addActionListener(this);
     }
     
     /*
@@ -53,6 +56,8 @@ public class CtrlRapportVisite implements ActionListener {
     */
     
     public final void afficherLesRapportVisites() {
+        //vue.getModeleListeRapportVisites().addElement("");
+        //vue.getModeleListePraticiens().addElement("");
         try {
             lesRapports = RapportVisiteDao.getAll();
             for (MetierRapportVisite rapport : lesRapports){
@@ -79,9 +84,6 @@ public class CtrlRapportVisite implements ActionListener {
         if (source == vue.getjButtonOK()) {
             int z = vue.getjComboBoxListeRapportVisites().getSelectedIndex();
             setVues(z);
-        }   
-        if (source == vue.getjButtonNouveau()) {
-            setVues(0);
         }
         if (source == vue.getjButtonPrecedent()){
             int i =vue.getjComboBoxListeRapportVisites().getSelectedIndex();
@@ -99,21 +101,53 @@ public class CtrlRapportVisite implements ActionListener {
                 setVues(z);
             }      
         }
+        if (source == vue.getjButtonNouveau()) {
+            if(set) {
+                //vue.getjComboBoxListePraticiens().setSelectedIndex(getIntIndexPraticien(newRapport));
+                MetierRapportVisite monRapport = (MetierRapportVisite) vue.getjComboBoxListeRapportVisites().getItemAt(vue.getjComboBoxListeRapportVisites().getItemCount()-1);
+                String num = Integer.toString(Integer.parseInt(monRapport.getNum())+1);
+                String date = vue.getjTextFieldDate().getText();
+                String motif = vue.getjTextFieldMotifVisite().getText();
+                String bilan = vue.getjTextAreaBilan().getText();
+                MetierPraticien monPraticien = (MetierPraticien) vue.getjComboBoxListePraticiens().getSelectedItem();
+                String numPraticien = monPraticien.getNum();
+                
+                MetierRapportVisite newRapport = new MetierRapportVisite(num, date, bilan, motif, numPraticien);
+                System.out.println(newRapport.toStringB(0));
+                set = false;
+            } else {
+                clearVues();
+                vue.getjButtonNouveau().setLabel("Valider");
+                vue.getjButtonOK().setEnabled(false);
+                vue.getjButtonPrecedent().setEnabled(false);
+                vue.getjButtonSuivant().setEnabled(false);
+                vue.getjComboBoxListeRapportVisites().setEnabled(false);
+                set = true;
+            }
+            
+            
+        }
+        
         if (source == vue.getjButtonFermer()) {
             vue.dispose();
         }
     }
     
-     void setVues(int z) {
+    void setVues(int z) {
         MetierRapportVisite monRapportVisite = (MetierRapportVisite) vue.getModeleListeRapportVisites().getSelectedItem();
-        MetierPraticien monPraticien = (MetierPraticien)vue.getModeleListePraticiens().getElementAt(z);
+        //MetierPraticien monPraticien = (MetierPraticien)vue.getModeleListePraticiens().getElementAt(z);
         
         vue.getjComboBoxListePraticiens().setSelectedIndex(getIntIndexPraticien(monRapportVisite));
-        
-        vue.getjTextFieldPraticien().setText(monPraticien.getNom());
         vue.getjTextFieldMotifVisite().setText(monRapportVisite.getMotif());
         vue.getjTextFieldDate().setText(monRapportVisite.getDate());
         vue.getjTextAreaBilan().setText(monRapportVisite.getBilan());
+    }
+    
+    void clearVues() {
+        //vue.getjComboBoxListePraticiens().set
+        vue.getjTextFieldMotifVisite().setText("");
+        vue.getjTextFieldDate().setText("");
+        vue.getjTextAreaBilan().setText("");
     }
      
     int getIntIndexPraticien(MetierRapportVisite monRapportVisite){
