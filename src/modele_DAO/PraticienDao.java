@@ -30,7 +30,8 @@ public class PraticienDao {
             String cp = res.getString("PRA_CP");
             String ville = res.getString("PRA_VILLE");
             String coef = res.getString("PRA_COEFNOTORIETE");
-            unPraticien = new MetierPraticien(num, nom, prenom, adresse, cp, ville, coef);
+            String type = res.getString("TYP_CODE");
+            unPraticien = new MetierPraticien(num, nom, prenom, adresse, cp, ville, coef, type);
             lesPraticiens.add(unPraticien);
         }
       
@@ -57,7 +58,8 @@ public class PraticienDao {
             String cp = res.getString("PRA_CP");
             String ville = res.getString("PRA_VILLE");
             String coef = res.getString("PRA_COEFNOTORIETE");
-            unPraticien = new MetierPraticien(num, nom, prenom, adresse, cp, ville, coef);
+            String type = res.getString("TYP_CODE");
+            unPraticien = new MetierPraticien(num, nom, prenom, adresse, cp, ville, coef, type);
         }
         return unPraticien;
     }

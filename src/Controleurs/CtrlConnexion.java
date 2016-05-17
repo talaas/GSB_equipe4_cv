@@ -41,11 +41,11 @@ public class CtrlConnexion implements ActionListener {
 
             try {
                 String login = vue.getjTextFieldLogin().getText();
-                String pass =  vue.getjTextFieldMDP().getText();
-                myVisiteur = VisiteurDao.getConnection(login, pass);                
+                String vis =  vue.getjTextFieldMDP().getText();
+                myVisiteur = VisiteurDao.getConnection(login, vis);
                 if (myVisiteur != null) {
                     VueMenu vue = new VueMenu();
-                    CtrlMenu controllers = new CtrlMenu(vue);
+                    CtrlMenu controllers = new CtrlMenu(vue, vis);
                     vue.setVisible(true);
                     this.vue.setVisible(false);
                 } else {

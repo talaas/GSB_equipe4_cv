@@ -5,10 +5,14 @@
  */
 package Controleurs;
 
+import Vues.VuePraticiens;
 import Vues.VueRapportVisite;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,21 +26,26 @@ import modele_Metier.*;
  */
 public class CtrlRapportVisite implements ActionListener {
     private VueRapportVisite vue;
+    private String login;
     
     private List<MetierRapportVisite> lesRapports;
     private List<MetierPraticien> lesPraticiens;
     
     private boolean set = false;
+    private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     
-    public CtrlRapportVisite(VueRapportVisite vue) {
+    public CtrlRapportVisite(VueRapportVisite vue, String login) {
         this.vue=vue;
+        this.login = login;
         afficherLesRapportVisites();
         //afficherLesPraticiens();
-        vue.getjButtonOK().addActionListener(this);
         vue.getjButtonFermer().addActionListener(this);
         vue.getjButtonPrecedent().addActionListener(this);
         vue.getjButtonSuivant().addActionListener(this);
         vue.getjButtonNouveau().addActionListener(this);
+        vue.getjComboBoxListeRapportVisites().addActionListener(this);
+        vue.getjButtonDetails().addActionListener(this);
+        System.out.println(login);
     }
     
     /*
@@ -81,9 +90,14 @@ public class CtrlRapportVisite implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         
-        if (source == vue.getjButtonOK()) {
+        if (source == vue.getjComboBoxListeRapportVisites()) {
             int z = vue.getjComboBoxListeRapportVisites().getSelectedIndex();
             setVues(z);
+        }
+        if (source == vue.getjButtonDetails()){
+            VuePraticiens vuePraticiens = new VuePraticiens();
+            CtrlPraticiens controllers = new CtrlPraticiens(vuePraticiens, login);
+            vuePraticiens.setVisible(true);
         }
         if (source == vue.getjButtonPrecedent()){
             int i =vue.getjComboBoxListeRapportVisites().getSelectedIndex();
@@ -106,19 +120,28 @@ public class CtrlRapportVisite implements ActionListener {
                 //vue.getjComboBoxListePraticiens().setSelectedIndex(getIntIndexPraticien(newRapport));
                 MetierRapportVisite monRapport = (MetierRapportVisite) vue.getjComboBoxListeRapportVisites().getItemAt(vue.getjComboBoxListeRapportVisites().getItemCount()-1);
                 String num = Integer.toString(Integer.parseInt(monRapport.getNum())+1);
-                String date = vue.getjTextFieldDate().getText();
+                Date date = Date.valueOf(dateFormat.format(vue.getjDateChooser().getDate()).toString());
                 String motif = vue.getjTextFieldMotifVisite().getText();
                 String bilan = vue.getjTextAreaBilan().getText();
                 MetierPraticien monPraticien = (MetierPraticien) vue.getjComboBoxListePraticiens().getSelectedItem();
                 String numPraticien = monPraticien.getNum();
                 
-                MetierRapportVisite newRapport = new MetierRapportVisite(num, date, bilan, motif, numPraticien);
+                MetierRapportVisite newRapport = new MetierRapportVisite(login, num, numPraticien, date, bilan, motif);
                 System.out.println(newRapport.toStringB(0));
+                try {
+                    RapportVisiteDao.insert(newRapport);
+                } catch (SQLException ex) {
+                    Logger.getLogger(CtrlRapportVisite.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(CtrlRapportVisite.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                vue.getjButtonPrecedent().setEnabled(true);
+                vue.getjButtonSuivant().setEnabled(true);
+                vue.getjComboBoxListeRapportVisites().setEnabled(true);
                 set = false;
             } else {
                 clearVues();
                 vue.getjButtonNouveau().setLabel("Valider");
-                vue.getjButtonOK().setEnabled(false);
                 vue.getjButtonPrecedent().setEnabled(false);
                 vue.getjButtonSuivant().setEnabled(false);
                 vue.getjComboBoxListeRapportVisites().setEnabled(false);
@@ -135,18 +158,19 @@ public class CtrlRapportVisite implements ActionListener {
     
     void setVues(int z) {
         MetierRapportVisite monRapportVisite = (MetierRapportVisite) vue.getModeleListeRapportVisites().getSelectedItem();
+        System.out.println(monRapportVisite.toStringB(0));
         //MetierPraticien monPraticien = (MetierPraticien)vue.getModeleListePraticiens().getElementAt(z);
         
         vue.getjComboBoxListePraticiens().setSelectedIndex(getIntIndexPraticien(monRapportVisite));
         vue.getjTextFieldMotifVisite().setText(monRapportVisite.getMotif());
-        vue.getjTextFieldDate().setText(monRapportVisite.getDate());
+        vue.getjDateChooser().setDate((monRapportVisite.getDate()));
         vue.getjTextAreaBilan().setText(monRapportVisite.getBilan());
     }
     
     void clearVues() {
         //vue.getjComboBoxListePraticiens().set
         vue.getjTextFieldMotifVisite().setText("");
-        vue.getjTextFieldDate().setText("");
+        //vue.getjDateChooser().setDateFormatString("2016-05-10");
         vue.getjTextAreaBilan().setText("");
     }
      

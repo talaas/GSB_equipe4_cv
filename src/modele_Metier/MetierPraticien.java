@@ -14,8 +14,9 @@ public class MetierPraticien {
     private String cp;
     private String ville;
     private String coef;
+    private String type;
 
-    public MetierPraticien(String num, String nom, String prenom, String adresse, String cp, String ville, String coef) {
+    public MetierPraticien(String num, String nom, String prenom, String adresse, String cp, String ville, String coef, String type) {
         this.num = num;
         this.nom = nom;
         this.prenom = prenom;
@@ -23,6 +24,7 @@ public class MetierPraticien {
         this.cp = cp;
         this.ville = ville;
         this.coef = coef;
+        this.type = type;
     }
 
     public String getNum() {
@@ -81,6 +83,14 @@ public class MetierPraticien {
         this.coef = coef;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+    
     @Override
     public String toString() {
         return toStringB(1);
@@ -92,7 +102,7 @@ public class MetierPraticien {
             case 1:
                 return nom+" "+prenom;
             default:
-            return "MetierPraticien{" + "num=" + num + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", cp=" + cp + ", ville=" + ville + ", coef=" + coef + '}';
+            return "MetierPraticien{" + "num=" + num + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", cp=" + cp + ", ville=" + ville + ", coef=" + coef + "type=" + type +"}";
         }    
     }
 

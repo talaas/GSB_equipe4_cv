@@ -32,16 +32,17 @@ public class Main {
         } catch (Exception e) {
             // If Nimbus is not available, you can set the GUI to another look and feel.
         }
-        
-        VueMenu vue = new VueMenu();
-        CtrlMenu controllers = new CtrlMenu(vue);
-        vue.setVisible(true);       
-       
         /*
+        VueMenu vue = new VueMenu();
+        String login = "a17";
+        CtrlMenu controllers = new CtrlMenu(vue, login);
+        vue.setVisible(true);
+       */
+        
         VueConnexion vue = new VueConnexion ();
         CtrlConnexion controllers = new CtrlConnexion(vue);
         vue.setVisible(true);
-             */
+             
     }
     
 }

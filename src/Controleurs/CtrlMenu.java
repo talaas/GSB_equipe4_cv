@@ -6,9 +6,7 @@
 //test
 package Controleurs;
 
-import Vues.VueMenu;
-import Vues.VueVisiteurs;
-import Vues.VueRapportVisite;
+import Vues.*;
 import java.awt.Menu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,11 +14,14 @@ import java.awt.event.ActionListener;
 
 public class CtrlMenu implements ActionListener {
     private VueMenu vue;
+    private String login;
     
-    public CtrlMenu(VueMenu vue){
+    public CtrlMenu(VueMenu vue, String login){
         this.vue = vue;
+        this.login = login;
         vue.getjButtonMenuVisiteur().addActionListener(this);
         vue.getjButtonRDV().addActionListener(this);
+        vue.getjButtonPraticiens().addActionListener(this);
 //        vue.getjButtonDeconnection().addActionListener(this);
     }
 
@@ -39,7 +40,7 @@ public class CtrlMenu implements ActionListener {
         
         if(source == vue.getjButtonRDV()){
             VueRapportVisite vueRapportVisiteur = new VueRapportVisite();
-            CtrlRapportVisite controllers = new CtrlRapportVisite(vueRapportVisiteur);
+            CtrlRapportVisite controllers = new CtrlRapportVisite(vueRapportVisiteur, login);
             vueRapportVisiteur.setVisible(true);
         }
         
@@ -48,12 +49,12 @@ public class CtrlMenu implements ActionListener {
             CtrlVisiteurs controllers = new CtrlVisiteurs(vueVisiteur);        
 //            vueVisiteur.setVisible(true); s
         }
-//        
-//        if(source == vue.getjButtonRDV()){
-//            VueRapportVisite vueRapportVisiteur = new VueRapportVisite();
-//            CtrlRapportVisite controllers = new CtrlRapportVisite(vueRapportVisiteur);
-//            vueRapportVisiteur.setVisible(true);
-//        }
+        
+        if(source == vue.getjButtonPraticiens()){
+            VuePraticiens vuePraticiens = new VuePraticiens();
+            CtrlPraticiens controllers = new CtrlPraticiens(vuePraticiens, login);
+            vuePraticiens.setVisible(true);
+        }
         
 //        if(source == vue.getjButtonDeconnection()){
 //            Accueil acceuil = new Accueil();

@@ -8,6 +8,7 @@ package Vues;
 import Controleurs.CtrlRapportVisite;
 import javax.swing.DefaultCellEditor;
 import javax.swing.*;
+import com.toedter.calendar.JDateChooser;
 
 
 /**
@@ -63,9 +64,8 @@ public class VueRapportVisite extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jComboBoxListeRapportVisites = new javax.swing.JComboBox();
-        jTextFieldDate = new javax.swing.JTextField();
-        jButtonOK = new javax.swing.JButton();
         jComboBoxListePraticiens = new javax.swing.JComboBox();
+        jDateChooser = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,6 +81,8 @@ public class VueRapportVisite extends javax.swing.JFrame {
 
         jTextAreaBilan.setColumns(20);
         jTextAreaBilan.setRows(5);
+        jTextAreaBilan.setLineWrap(true);
+        jTextAreaBilan.setWrapStyleWord(true);
         jScrollPane1.setViewportView(jTextAreaBilan);
 
         jLabel6.setText("Offre echantillon");
@@ -126,20 +128,14 @@ public class VueRapportVisite extends javax.swing.JFrame {
             }
         });
 
-        jTextFieldDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldDateActionPerformed(evt);
-            }
-        });
-
-        jButtonOK.setText("OK");
-
         jComboBoxListePraticiens.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxListePraticiens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxListePraticiensActionPerformed(evt);
             }
         });
+
+        jDateChooser.setDateFormatString("yyyy-MM-dd");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -173,17 +169,18 @@ public class VueRapportVisite extends javax.swing.JFrame {
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE)
                                     .addComponent(jScrollPane1)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jComboBoxListePraticiens, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jComboBoxListeRapportVisites, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jTextFieldMotifVisite, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                                            .addComponent(jTextFieldDate))
-                                        .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jButtonOK)
-                                            .addComponent(jButtonDetails))
-                                        .addGap(193, 193, 193))))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(jComboBoxListePraticiens, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(jComboBoxListeRapportVisites, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(jTextFieldMotifVisite, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel7)
+                                                    .addComponent(jButtonDetails)))
+                                            .addComponent(jDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(85, 85, 85))
         );
@@ -200,10 +197,8 @@ public class VueRapportVisite extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBoxListeRapportVisites, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonOK))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jComboBoxListeRapportVisites, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 1, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -211,9 +206,9 @@ public class VueRapportVisite extends javax.swing.JFrame {
                         .addComponent(jComboBoxListePraticiens, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jTextFieldDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -227,11 +222,12 @@ public class VueRapportVisite extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonSuivant)
-                    .addComponent(jButtonNouveau)
-                    .addComponent(jButtonPrecedent)
-                    .addComponent(jButtonFermer))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonFermer)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonSuivant)
+                        .addComponent(jButtonNouveau)
+                        .addComponent(jButtonPrecedent)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -245,10 +241,6 @@ public class VueRapportVisite extends javax.swing.JFrame {
     private void jComboBoxListeRapportVisitesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxListeRapportVisitesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxListeRapportVisitesActionPerformed
-
-    private void jTextFieldDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldDateActionPerformed
 
     private void jComboBoxListePraticiensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxListePraticiensActionPerformed
         // TODO add your handling code here:
@@ -296,11 +288,11 @@ public class VueRapportVisite extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDetails;
     private javax.swing.JButton jButtonFermer;
     private javax.swing.JButton jButtonNouveau;
-    private javax.swing.JButton jButtonOK;
     private javax.swing.JButton jButtonPrecedent;
     private javax.swing.JButton jButtonSuivant;
     private javax.swing.JComboBox jComboBoxListePraticiens;
     private javax.swing.JComboBox jComboBoxListeRapportVisites;
+    private com.toedter.calendar.JDateChooser jDateChooser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -313,7 +305,6 @@ public class VueRapportVisite extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTableOffreEchantillon;
     private javax.swing.JTextArea jTextAreaBilan;
-    private javax.swing.JTextField jTextFieldDate;
     private javax.swing.JTextField jTextFieldMotifVisite;
     // End of variables declaration//GEN-END:variables
     
@@ -365,10 +356,6 @@ public class VueRapportVisite extends javax.swing.JFrame {
         this.jButtonFermer = jButtonFermer;
     }
     
-    public JButton getjButtonOK() {
-        return jButtonOK;
-    }
-    
     public JButton getjButtonPrecedent() {
         return jButtonPrecedent;
     }
@@ -405,8 +392,8 @@ public class VueRapportVisite extends javax.swing.JFrame {
         this.jTextFieldMotifVisite = jTextFieldMotifVisite;
     }
     
-    public JTextField getjTextFieldDate() {
-        return jTextFieldDate;
+    public JDateChooser getjDateChooser() {
+        return jDateChooser;
     }
 
 }

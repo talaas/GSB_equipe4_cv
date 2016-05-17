@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import modele_Metier.MetierRapportVisite;
 /**
@@ -14,6 +14,8 @@ import modele_Metier.MetierRapportVisite;
  * @author btssio
  */
 public class RapportVisiteDao {
+    
+    
     
     public static List<MetierRapportVisite> getAll() throws SQLException, ClassNotFoundException {         
         List<MetierRapportVisite> lesRapportVisites = new ArrayList<>(); 
@@ -28,10 +30,10 @@ public class RapportVisiteDao {
         //lancer une 2e requete pour remplir la liste medicaments de l'objet MetierRapportVisite (?)
         
         while (res.next()) {
-            String matricule = res.getString("VIS_MATRICULE");
+            String visMat = res.getString("VIS_MATRICULE");
             String num = res.getString("RAP_NUM");
             String numPraticien = res.getString("PRA_NUM");
-            String date = res.getString("RAP_DATE");
+            Date date = res.getDate("RAP_DATE");
             String bilan = res.getString("RAP_BILAN");
             String motif = res.getString("RAP_MOTIF");
             
@@ -51,14 +53,14 @@ public class RapportVisiteDao {
                 medicaments.
             }*/
             
-            unRapportVisite = new MetierRapportVisite(num, date, bilan, motif, numPraticien);
+            unRapportVisite = new MetierRapportVisite(visMat, num, numPraticien, date, bilan, motif);
             lesRapportVisites.add(unRapportVisite);
         }
       
-    return lesRapportVisites;
-  }
+        return lesRapportVisites;
+    }
   
-  public static MetierRapportVisite getOneByNum(String numRapportVisite) throws SQLException, ClassNotFoundException {
+    public static MetierRapportVisite getOneByNum(String numRapportVisite) throws SQLException, ClassNotFoundException {
         MetierRapportVisite unRapportVisite = null;
         
         Connection con = modele.Connect.Connection();  
@@ -72,15 +74,37 @@ public class RapportVisiteDao {
         
         if (res.next()) {
             
-            String matricule = res.getString("VIS_MATRICULE");
+            String visMat = res.getString("VIS_MATRICULE");
             String num = res.getString("RAP_NUM");
             String numPraticien = res.getString("PRA_NUM");
-            String date = (res.getString("RAP_DATE"));
+            Date date = res.getDate("RAP_DATE");
             String bilan = res.getString("RAP_BILAN");
             String motif = res.getString("RAP_MOTIF");
             
-            unRapportVisite = new MetierRapportVisite(num, date, bilan, motif, numPraticien);
+            unRapportVisite = new MetierRapportVisite(visMat, num, numPraticien, date, bilan, motif);
         }
         return unRapportVisite;
+    }
+    
+    public static int insert(MetierRapportVisite rapport) throws SQLException, ClassNotFoundException {
+        int nb;
+        
+        Connection con = modele.Connect.Connection();  
+        String requete;
+        //ResultSet rs;
+        PreparedStatement pstmt;
+        requete = "INSERT INTO RAPPORT_VISITE (VIS_MATRICULE, RAP_NUM, PRA_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF)"
+                + "VALUES (?, ?, ?, TO_DATE(?,'yyyy-mm-dd'), ?, ?)";
+        //TO_DATE('2011-10-29 00:00:00', 'YYYY-MM-DD HH24:MI:SS')
+        pstmt = con.prepareStatement(requete);
+        pstmt.setString(1, rapport.getVisMatricule());
+        pstmt.setInt(2, Integer.parseInt(rapport.getNum()));
+        pstmt.setInt(3, Integer.parseInt(rapport.getNumPraticien()));
+        pstmt.setDate(4, rapport.getDate());
+        pstmt.setString(5, rapport.getBilan());
+        pstmt.setString(6, rapport.getMotif());
+        System.out.println(pstmt);
+        nb = pstmt.executeUpdate();
+        return nb;
     }
 }

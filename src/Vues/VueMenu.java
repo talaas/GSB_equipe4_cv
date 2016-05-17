@@ -27,6 +27,7 @@ public class VueMenu extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jButtonMenuVisiteur = new javax.swing.JButton();
         jButtonRDV = new javax.swing.JButton();
+        jButtonPraticiens = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,6 +48,13 @@ public class VueMenu extends javax.swing.JFrame {
             }
         });
 
+        jButtonPraticiens.setText("Praticiens");
+        jButtonPraticiens.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPraticiensActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -58,7 +66,8 @@ public class VueMenu extends javax.swing.JFrame {
                         .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonRDV, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonMenuVisiteur, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jButtonMenuVisiteur, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonPraticiens, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(103, 103, 103)
                         .addComponent(jLabel1)))
@@ -75,7 +84,9 @@ public class VueMenu extends javax.swing.JFrame {
                 .addComponent(jButtonMenuVisiteur)
                 .addGap(42, 42, 42)
                 .addComponent(jButtonRDV)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addGap(42, 42, 42)
+                .addComponent(jButtonPraticiens)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
@@ -88,6 +99,10 @@ public class VueMenu extends javax.swing.JFrame {
     private void jButtonRDVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRDVActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonRDVActionPerformed
+
+    private void jButtonPraticiensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPraticiensActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonPraticiensActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,6 +148,7 @@ public class VueMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonMenuVisiteur;
+    private javax.swing.JButton jButtonPraticiens;
     private javax.swing.JButton jButtonRDV;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
@@ -144,6 +160,10 @@ public class VueMenu extends javax.swing.JFrame {
 
     public JButton getjButtonRDV() {
         return jButtonRDV;
+    }
+    
+    public JButton getjButtonPraticiens() {
+        return jButtonPraticiens;
     }
 
     public JLabel getjLabel1() {

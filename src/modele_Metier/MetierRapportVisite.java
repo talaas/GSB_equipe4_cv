@@ -10,38 +10,43 @@ package modele_Metier;
  * @author flevesque
  */
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 /*
- *
  *
  * /!\ attributs arbitraires
  * /!\ type Date à tester avec la DAO
  *
 */
 
-
-
-
-
 public class MetierRapportVisite {
     
+    private String visMatricule;
     private String num;
-    private String date;
+    private String numPraticien;
+    private Date date;
     private String bilan;
     private String motif;
-    private String numPraticien;
     //private List<String> medicaments;
 
-    public MetierRapportVisite(String num, String date, String bilan, String motif, String numPraticien) {
+    public MetierRapportVisite(String visMatricule, String num, String numPraticien, Date date, String bilan, String motif) {
+        this.visMatricule = visMatricule;
         this.num = num;
+        this.numPraticien = numPraticien;
         this.date = date;
         this.bilan = bilan;
         this.motif = motif;
-        this.numPraticien = numPraticien;
+    }
+    
+    public String getVisMatricule() {
+        return visMatricule;
     }
 
+    public void setVisMatricule(String visMatricule) {
+        this.visMatricule = visMatricule;
+    }
+    
     public String getNum() {
         return num;
     }
@@ -49,12 +54,20 @@ public class MetierRapportVisite {
     public void setNum(String num) {
         this.num = num;
     }
+    
+    public String getNumPraticien() {
+        return numPraticien;
+    }
 
-    public String getDate() {
+    public void setNumPraticien(String numPraticien) {
+        this.numPraticien = numPraticien;
+    }
+    
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -74,25 +87,16 @@ public class MetierRapportVisite {
         this.motif = motif;
     }
 
-    public String getNumPraticien() {
-        return numPraticien;
-    }
-
-    public void setNumPraticien(String numPraticien) {
-        this.numPraticien = numPraticien;
-    }
-
     @Override
     public String toString() {
         return toStringB(1);
     }
     public String toStringB(int a) {
-        switch (a)
-            {
+        switch (a) {
             case 1:
                 return "Rapport "+num;
             default:
-                return "MetierRapportVisite{" + "num=" + num + ", date=" + date + ", bilan=" + bilan + ", motif=" + motif + ", numPraticien=" + numPraticien + '}';
+                return "MetierRapportVisite{" + "visMat=" + visMatricule +", num=" + num + ", numPraticien=" + numPraticien + ", date=" + date + ", bilan=" + bilan + ", motif=" + motif + '}';
         }    
     }
 }
