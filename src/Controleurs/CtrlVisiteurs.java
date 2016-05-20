@@ -34,7 +34,7 @@ public class CtrlVisiteurs implements ActionListener {
         afficherLesVisiteurs();
         afficherLesLabos();
         afficherLesSecteurs();
-        vue.getjButtonOK().addActionListener(this);
+        vue.getjComboBoxListeVisiteurs().addActionListener(this);
         vue.getjButtonFermer().addActionListener(this);
         vue.getjButtonPrecedent().addActionListener(this);
         vue.getjButtonSuivant().addActionListener(this);
@@ -85,9 +85,9 @@ public class CtrlVisiteurs implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
-        if (source == vue.getjButtonOK()) {
+        if (source == vue.getjComboBoxListeVisiteurs()) {
             setVues();
-        }        
+        }
         if (source == vue.getjButtonPrecedent()){
             int i =vue.getjComboBoxListeVisiteurs().getSelectedIndex();
             int z = i-1;

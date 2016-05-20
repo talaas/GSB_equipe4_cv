@@ -30,6 +30,7 @@ public class CtrlRapportVisite implements ActionListener {
     
     private List<MetierRapportVisite> lesRapports;
     private List<MetierPraticien> lesPraticiens;
+    private List<MetierMedicament> lesMedicaments;
     
     private boolean set = false;
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -45,7 +46,6 @@ public class CtrlRapportVisite implements ActionListener {
         vue.getjButtonNouveau().addActionListener(this);
         vue.getjComboBoxListeRapportVisites().addActionListener(this);
         vue.getjButtonDetails().addActionListener(this);
-        System.out.println(login);
     }
     
     /*
@@ -65,8 +65,9 @@ public class CtrlRapportVisite implements ActionListener {
     */
     
     public final void afficherLesRapportVisites() {
-        //vue.getModeleListeRapportVisites().addElement("");
-        //vue.getModeleListePraticiens().addElement("");
+        
+        vue.getjTableOffreEchantillon().setEnabled(false);
+        
         try {
             lesRapports = RapportVisiteDao.getAll();
             for (MetierRapportVisite rapport : lesRapports){
@@ -77,6 +78,12 @@ public class CtrlRapportVisite implements ActionListener {
             lesPraticiens = PraticienDao.getAll();
             for (MetierPraticien praticien : lesPraticiens){
                 vue.getModeleListePraticiens().addElement(praticien);
+            }
+            lesMedicaments = MedicamentDao.getAll();
+            int i=0;
+            for (MetierMedicament medicament : lesMedicaments){
+                vue.getModeleListeMedicaments().addElement(medicament);
+                //vue.getjTextFieldNbMedicaments().setText("a");
             }
             
         } catch (SQLException ex) {
@@ -130,14 +137,17 @@ public class CtrlRapportVisite implements ActionListener {
                 System.out.println(newRapport.toStringB(0));
                 try {
                     RapportVisiteDao.insert(newRapport);
+                    vue.getModeleListeRapportVisites().addElement(newRapport);
                 } catch (SQLException ex) {
                     Logger.getLogger(CtrlRapportVisite.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(CtrlRapportVisite.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                vue.getjButtonNouveau().setLabel("Nouveau");
                 vue.getjButtonPrecedent().setEnabled(true);
                 vue.getjButtonSuivant().setEnabled(true);
                 vue.getjComboBoxListeRapportVisites().setEnabled(true);
+                vue.getjTableOffreEchantillon().setEnabled(false);
                 set = false;
             } else {
                 clearVues();
@@ -145,6 +155,7 @@ public class CtrlRapportVisite implements ActionListener {
                 vue.getjButtonPrecedent().setEnabled(false);
                 vue.getjButtonSuivant().setEnabled(false);
                 vue.getjComboBoxListeRapportVisites().setEnabled(false);
+                vue.getjTableOffreEchantillon().setEnabled(true);
                 set = true;
             }
             
@@ -159,6 +170,7 @@ public class CtrlRapportVisite implements ActionListener {
     void setVues(int z) {
         MetierRapportVisite monRapportVisite = (MetierRapportVisite) vue.getModeleListeRapportVisites().getSelectedItem();
         System.out.println(monRapportVisite.toStringB(0));
+        
         //MetierPraticien monPraticien = (MetierPraticien)vue.getModeleListePraticiens().getElementAt(z);
         
         vue.getjComboBoxListePraticiens().setSelectedIndex(getIntIndexPraticien(monRapportVisite));

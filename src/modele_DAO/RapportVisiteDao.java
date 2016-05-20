@@ -15,8 +15,6 @@ import modele_Metier.MetierRapportVisite;
  */
 public class RapportVisiteDao {
     
-    
-    
     public static List<MetierRapportVisite> getAll() throws SQLException, ClassNotFoundException {         
         List<MetierRapportVisite> lesRapportVisites = new ArrayList<>(); 
         MetierRapportVisite unRapportVisite;
@@ -86,15 +84,27 @@ public class RapportVisiteDao {
         return unRapportVisite;
     }
     
+    public static String getMedicamentRapport(String rapNum) throws SQLException, ClassNotFoundException{
+        String nom = null;
+        Connection con = modele.Connect.Connection();
+        Statement state = con.createStatement();
+        
+        ResultSet res = state.executeQuery("SELECT Offrir.RAP_NUM,Medicament.MED_DEPOTLEGAL,Medicament.MED_NOMCOMMERCIAL FROM Offrir"
+                                    + "INNER JOIN Medicament ON Offrir.MED_DEPOTLEGAL=Medicament.MED_DEPOTLEGAL WHERE RAP_NUM ="+rapNum);
+        while(res.next()){
+            nom = res.getString("Medicament.MED_NOMCOMMERCIAL");
+        }
+        return nom;
+    }
+    
     public static int insert(MetierRapportVisite rapport) throws SQLException, ClassNotFoundException {
-        int nb;
+        int nb = 0;
         
         Connection con = modele.Connect.Connection();  
         String requete;
-        //ResultSet rs;
         PreparedStatement pstmt;
         requete = "INSERT INTO RAPPORT_VISITE (VIS_MATRICULE, RAP_NUM, PRA_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF)"
-                + "VALUES (?, ?, ?, TO_DATE(?,'yyyy-mm-dd'), ?, ?)";
+                + "VALUES (?, ?, ?, ?, ?, ?)";
         //TO_DATE('2011-10-29 00:00:00', 'YYYY-MM-DD HH24:MI:SS')
         pstmt = con.prepareStatement(requete);
         pstmt.setString(1, rapport.getVisMatricule());
@@ -103,7 +113,6 @@ public class RapportVisiteDao {
         pstmt.setDate(4, rapport.getDate());
         pstmt.setString(5, rapport.getBilan());
         pstmt.setString(6, rapport.getMotif());
-        System.out.println(pstmt);
         nb = pstmt.executeUpdate();
         return nb;
     }

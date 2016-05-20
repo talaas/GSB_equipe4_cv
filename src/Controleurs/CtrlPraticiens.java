@@ -55,7 +55,7 @@ public class CtrlPraticiens implements ActionListener {
             Logger.getLogger(CtrlPraticiens.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+/*
     public final void afficherLesLieuExercice() {
         try {
             lesLieus = Dao.getAllLieuExercice();
@@ -69,7 +69,7 @@ public class CtrlPraticiens implements ActionListener {
         }
 
     }
-    
+    */
     
     @Override
    public void actionPerformed(ActionEvent e) {

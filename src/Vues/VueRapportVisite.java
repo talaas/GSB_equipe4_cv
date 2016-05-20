@@ -17,16 +17,17 @@ import com.toedter.calendar.JDateChooser;
  */
 public class VueRapportVisite extends javax.swing.JFrame {
 
-    //private CtrlRapportVisite controleur;
     DefaultComboBoxModel modeleListeRapportVisites;
     DefaultComboBoxModel modeleListePraticiens;
     DefaultComboBoxModel modeleListeMedicaments;
-    JComboBox jComboBoxMedicament= new JComboBox();
+    JComboBox jComboBoxMedicament = new JComboBox();
+    JTextField jTextFieldNbMedicaments; 
     
     /**
      * Creates new form rapportVisite
      */
     public VueRapportVisite() {
+        jTextFieldNbMedicaments = new javax.swing.JTextField();
         initComponents();
         modeleListeRapportVisites = new DefaultComboBoxModel();
         jComboBoxListeRapportVisites.setModel(modeleListeRapportVisites);
@@ -34,6 +35,7 @@ public class VueRapportVisite extends javax.swing.JFrame {
         jComboBoxListePraticiens.setModel(modeleListePraticiens);
         modeleListeMedicaments = new DefaultComboBoxModel();
         jComboBoxMedicament.setModel(modeleListeMedicaments);
+        
     }
 
     /**
@@ -112,10 +114,19 @@ public class VueRapportVisite extends javax.swing.JFrame {
             new String [] {
                 "Médicaments", "Nb Enregistrements"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jTableOffreEchantillon);
         if (jTableOffreEchantillon.getColumnModel().getColumnCount() > 0) {
             jTableOffreEchantillon.getColumnModel().getColumn(0).setCellEditor(new DefaultCellEditor(jComboBoxMedicament));
+            jTableOffreEchantillon.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(jTextFieldNbMedicaments));
         }
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -339,6 +350,14 @@ public class VueRapportVisite extends javax.swing.JFrame {
     public void setjComboBoxMedicament(JComboBox jComboBoxMedicament) {
         this.jComboBoxMedicament = jComboBoxMedicament;
     }
+    
+    public JTextField getjTextFieldNbMedicaments() {
+        return jTextFieldNbMedicaments;
+    }
+    
+    public void setjTextFieldNbMedicaments(JTextField jTextFieldNbMedicaments) {
+        this.jTextFieldNbMedicaments = jTextFieldNbMedicaments;
+    }
 
     public JButton getjButtonDetails() {
         return jButtonDetails;
@@ -383,7 +402,7 @@ public class VueRapportVisite extends javax.swing.JFrame {
     public void setjTextAreaBilan(JTextArea jTextAreaBilan) {
         this.jTextAreaBilan = jTextAreaBilan;
     }
-
+    
     public JTextField getjTextFieldMotifVisite() {
         return jTextFieldMotifVisite;
     }
