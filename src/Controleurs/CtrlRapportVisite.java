@@ -48,22 +48,6 @@ public class CtrlRapportVisite implements ActionListener {
         vue.getjButtonDetails().addActionListener(this);
     }
     
-    /*
-    public final void afficherLesPraticiens() {
-        try {
-            lesPraticiens = PraticienDao.getAll();
-            for (MetierPraticien praticien : lesPraticiens){
-                vue.getModeleListePraticiens().addElement(praticien);
-            }
-            
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(vue, "Ctrl - erreur SQL");
-        }                        
-    }
-    */
-    
     public final void afficherLesRapportVisites() {
         
         vue.getjTableOffreEchantillon().setEnabled(false);
@@ -159,7 +143,6 @@ public class CtrlRapportVisite implements ActionListener {
                 set = true;
             }
             
-            
         }
         
         if (source == vue.getjButtonFermer()) {
@@ -171,8 +154,6 @@ public class CtrlRapportVisite implements ActionListener {
         MetierRapportVisite monRapportVisite = (MetierRapportVisite) vue.getModeleListeRapportVisites().getSelectedItem();
         System.out.println(monRapportVisite.toStringB(0));
         
-        //MetierPraticien monPraticien = (MetierPraticien)vue.getModeleListePraticiens().getElementAt(z);
-        
         vue.getjComboBoxListePraticiens().setSelectedIndex(getIntIndexPraticien(monRapportVisite));
         vue.getjTextFieldMotifVisite().setText(monRapportVisite.getMotif());
         vue.getjDateChooser().setDate((monRapportVisite.getDate()));
@@ -180,16 +161,13 @@ public class CtrlRapportVisite implements ActionListener {
     }
     
     void clearVues() {
-        //vue.getjComboBoxListePraticiens().set
         vue.getjTextFieldMotifVisite().setText("");
-        //vue.getjDateChooser().setDateFormatString("2016-05-10");
         vue.getjTextAreaBilan().setText("");
     }
      
     int getIntIndexPraticien(MetierRapportVisite monRapportVisite){
         
         int index = 0;
-        
         try {
             List<MetierPraticien> mesPraticiens = PraticienDao.getAll();
             for(MetierPraticien praticien : mesPraticiens){

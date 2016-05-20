@@ -1,14 +1,11 @@
 package modele_DAO;
 
 import java.sql.Connection;
-import java.sql.Date;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import modele.Connect;
 import modele_Metier.Labo;
 import modele_Metier.MetierVisiteur;
 import modele_Metier.Secteur;

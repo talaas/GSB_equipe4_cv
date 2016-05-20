@@ -5,11 +5,9 @@
  */
 package Vues;
 
-import Controleurs.CtrlRapportVisite;
 import javax.swing.DefaultCellEditor;
 import javax.swing.*;
 import com.toedter.calendar.JDateChooser;
-
 
 /**
  *

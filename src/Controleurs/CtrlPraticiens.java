@@ -5,17 +5,13 @@
  */
 package Controleurs;
 
-import Vues.VueMenu;
 import Vues.VuePraticiens;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import modele_DAO.Dao;
 import modele_DAO.PraticienDao;
 import modele_Metier.MetierPraticien;
 //import modele_Metier.LieuExercice;
@@ -55,21 +51,6 @@ public class CtrlPraticiens implements ActionListener {
             Logger.getLogger(CtrlPraticiens.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-/*
-    public final void afficherLesLieuExercice() {
-        try {
-            lesLieus = Dao.getAllLieuExercice();
-            for (LieuExercice unLieu : lesLieus) {
-                vue.getjComboBoxLieuExercice().addItem(unLieu);
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(vue, "Ctrl - erreur SQL");
-        }
-
-    }
-    */
     
     @Override
    public void actionPerformed(ActionEvent e) {
@@ -111,16 +92,4 @@ public class CtrlPraticiens implements ActionListener {
         vue.getjTextFieldCN().setText(monPraticien.getCoef());
         //vue.getjComboBoxLieuExercice().setSelectedIndex(getIntIndexLieu(lesLieus, monPraticien, -1));
     }
-
-
- int getIntIndexLieu(List<LieuExercice> myLieu, MetierPraticien myPracticien, int index) {
-
-        for (LieuExercice unLieu : myLieu) {
-            if (unLieu.getTyp_code().equals(myPracticien.getType())) {
-                index = myLieu.indexOf(unLieu);
-            }
-        }
-        return index;
-    }
-
 }
